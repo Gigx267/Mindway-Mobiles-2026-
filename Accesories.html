@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessories | Mindway Tech Abuja</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --accent: #00f2ff;
+            --accent-silver: #a1a1a6;
+            --tech-black: #050505;
+            --card-bg: #0d0d0d;
+            --border-light: rgba(255, 255, 255, 0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: var(--tech-black); 
+            color: white;
+            line-height: 1.6;
+        }
+
+        /* --- Global Nav (Matching Home/Laptop) --- */
+        header {
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(15px);
+            padding: 1rem 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            position: sticky; top: 0; z-index: 1000;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .logo-box .logo { font-weight: 900; letter-spacing: 5px; font-size: 1.2rem; text-decoration: none; color: white; }
+        .nav-links { display: flex; list-style: none; gap: 2.5rem; align-items: center; }
+        .nav-item { text-decoration: none; color: var(--accent-silver); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; }
+
+        /* --- Header Section --- */
+        .page-header {
+            padding: 100px 5% 40px;
+            text-align: center;
+        }
+        .page-header span { color: var(--accent); letter-spacing: 5px; text-transform: uppercase; font-size: 12px; font-weight: 700; }
+        .page-header h1 { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 900; text-transform: uppercase; margin-top: 10px; }
+
+        /* --- Category Filters --- */
+        .accessory-filters {
+            display: flex; justify-content: center; gap: 15px; margin-bottom: 50px; flex-wrap: wrap;
+        }
+        .filter-chip {
+            padding: 8px 20px; border-radius: 4px; border: 1px solid var(--border-light);
+            background: transparent; color: var(--accent-silver); cursor: pointer;
+            font-size: 10px; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s;
+        }
+        .filter-chip:hover, .filter-chip.active {
+            border-color: var(--accent); color: var(--accent); background: rgba(0, 242, 255, 0.05);
+        }
+
+        /* --- Accessories Grid --- */
+        .inventory-container { padding: 0 5% 100px; max-width: 1400px; margin: 0 auto; }
+        .acc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .acc-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            padding: 30px;
+            transition: 0.4s cubic-bezier(0.2, 1, 0.2, 1);
+            display: flex; flex-direction: column;
+        }
+        .acc-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .img-wrapper {
+            height: 220px; display: flex; align-items: center; justify-content: center; margin-bottom: 25px;
+        }
+        .img-wrapper img { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+        .comp-tag { 
+            font-size: 9px; color: var(--accent); text-transform: uppercase; 
+            letter-spacing: 1px; font-weight: 700; margin-bottom: 10px;
+        }
+
+        .acc-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; letter-spacing: 0.5px; }
+        .acc-price { font-size: 1.3rem; font-weight: 900; color: white; margin-bottom: 20px; }
+        
+        .action-area { display: flex; gap: 10px; margin-top: auto; }
+        
+        .btn-order {
+            flex: 1; padding: 12px; background: white; color: black;
+            text-decoration: none; text-align: center; font-size: 11px;
+            font-weight: 900; text-transform: uppercase; border-radius: 8px;
+            transition: 0.3s;
+        }
+        .btn-order:hover { background: var(--accent); }
+
+        .btn-cart {
+            width: 45px; height: 45px; border: 1px solid var(--border-light);
+            border-radius: 8px; display: flex; align-items: center; justify-content: center;
+            color: white; transition: 0.3s; cursor: pointer;
+        }
+        .btn-cart:hover { border-color: var(--accent); color: var(--accent); }
+
+        /* --- Promo Banner --- */
+        .bundle-banner {
+            background: linear-gradient(90deg, #111, #1a1a1a);
+            border: 1px solid var(--border-light);
+            padding: 40px; border-radius: 24px; margin-top: 60px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .bundle-text h2 { font-size: 1.8rem; margin-bottom: 10px; }
+        .bundle-text p { color: var(--accent-silver); font-size: 0.9rem; }
+
+        /* Floating Action */
+        .wa-contact {
+            position: fixed; bottom: 30px; right: 30px;
+            background: #25d366; color: white; width: 55px; height: 55px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 24px; text-decoration: none; z-index: 2000;
+        }
+
+        @media (max-width: 768px) {
+            .bundle-banner { flex-direction: column; text-align: center; gap: 20px; }
+            .acc-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo-box">
+        <a href="index.html" class="logo" style="text-decoration:none">MINDWAY</a>
+    </div>
+    <nav>
+        <ul class="nav-links">
+            <li><a href="laptop.html" class="nav-item">Laptops</a></li>
+            <li><a href="phone.html" class="nav-item">Phones</a></li>
+            <li><a href="accessories.html" class="nav-item" style="color: var(--accent);">Accessories</a></li>
+            <li><a href="contact.html" class="nav-item">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="page-header">
+    <span>Original Augmentations</span>
+    <h1>The Gear Matrix</h1>
+</section>
+
+<div class="inventory-container">
+    <div class="accessory-filters">
+        <button class="filter-chip active">All Gear</button>
+        <button class="filter-chip">Audio</button>
+        <button class="filter-chip">Charging</button>
+        <button class="filter-chip">Storage</button>
+        <button class="filter-chip">Protection</button>
+    </div>
+
+    <div class="acc-grid">
+        <div class="acc-card">
+            <div class="img-wrapper">
+                <img src="https://www.pngmart.com/files/22/Airpods-Pro-PNG-Isolated-Pic.png" alt="Airpods">
+            </div>
+            <span class="comp-tag">iOS Optimized</span>
+            <h3>AirPods Pro (2nd Gen)</h3>
+            <p class="acc-price">₦345,000</p>
+            <div class="action-area">
+                <a href="#" class="btn-order">Order Now</a>
+                <div class="btn-cart"><i class="fas fa-plus"></i></div>
+            </div>
+        </div>
+
+        <div class="acc-card">
+            <div class="img-wrapper">
+                <img src="https://images.unsplash.com/photo-1625842268584-8f3bf9ff16a0?auto=format&fit=crop&q=80&w=400" alt="Magsafe" style="border-radius: 10px;">
+            </div>
+            <span class="comp-tag">iPhone 12 - 16</span>
+            <h3>MagSafe Wireless Duo</h3>
+            <p class="acc-price">₦95,000</p>
+            <div class="action-area">
+                <a href="#" class="btn-order">Order Now</a>
+                <div class="btn-cart"><i class="fas fa-plus"></i></div>
+            </div>
+        </div>
+
+        <div class="acc-card">
+            <div class="img-wrapper">
+                <img src="https://www.pngmart.com/files/22/Sony-Headphone-PNG-Isolated-Pic.png" alt="Sony Headphones">
+            </div>
+            <span class="comp-tag">Universal / Hi-Res</span>
+            <h3>Sony WH-1000XM5</h3>
+            <p class="acc-price">₦580,000</p>
+            <div class="action-area">
+                <a href="#" class="btn-order">Order Now</a>
+                <div class="btn-cart"><i class="fas fa-plus"></i></div>
+            </div>
+        </div>
+
+        <div class="acc-card">
+            <div class="img-wrapper">
+                <img src="https://www.pngmart.com/files/22/Samsung-Galaxy-Buds-PNG-Isolated-Pic.png" alt="Galaxy Buds">
+            </div>
+            <span class="comp-tag">Android Optimized</span>
+            <h3>Galaxy Buds2 Pro</h3>
+            <p class="acc-price">₦210,000</p>
+            <div class="action-area">
+                <a href="#" class="btn-order">Order Now</a>
+                <div class="btn-cart"><i class="fas fa-plus"></i></div>
+            </div>
+        </div>
+
+        <div class="acc-card">
+            <div class="img-wrapper">
+                <img src="https://www.pngmart.com/files/22/Amazon-Echo-Dot-4th-Gen-PNG-Transparent.png" alt="Charger">
+            </div>
+            <span class="comp-tag">Fast Charging</span>
+            <h3>Anker 735 GaNPrime</h3>
+            <p class="acc-price">₦68,000</p>
+            <div class="action-area">
+                <a href="#" class="btn-order">Order Now</a>
+                <div class="btn-cart"><i class="fas fa-plus"></i></div>
+            </div>
+        </div>
+
+        <div class="acc-card">
+            <div class="img-wrapper">
+                <img src="https://www.pngmart.com/files/15/Computer-External-Hard-Drive-PNG-Image.png" alt="SSD">
+            </div>
+            <span class="comp-tag">1TB / USB-C</span>
+            <h3>Samsung T7 Shield</h3>
+            <p class="acc-price">₦175,000</p>
+            <div class="action-area">
+                <a href="#" class="btn-order">Order Now</a>
+                <div class="btn-cart"><i class="fas fa-plus"></i></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bundle-banner">
+        <div class="bundle-text">
+            <h2>Abuja Power Bundle</h2>
+            <p>Buy any Laptop and get 20% off all protection cases and cleaning kits.</p>
+        </div>
+        <a href="contact.html" class="btn-order" style="max-width: 200px;">Claim Discount</a>
+    </div>
+</div>
+
+<a href="https://wa.me/234XXXXXXXXXX" class="wa-contact">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+</body>
+</html>

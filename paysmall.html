@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pay Small Small - Easy Installments | Mindway Tech Abuja</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --accent: #00c896;
+            --accent-silver: #a1a1a6;
+            --tech-black: #050505;
+            --clinical-white: #ffffff;
+            --border-light: rgba(255, 255, 255, 0.1);
+            --glass: rgba(10, 10, 10, 0.9);
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: var(--tech-black); 
+            color: white;
+            overflow-x: hidden; 
+        }
+
+        /* --- Global Nav --- */
+        header {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            padding: 1rem 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            position: sticky; top: 0; z-index: 1000;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .logo-box .logo { 
+            font-weight: 900; 
+            letter-spacing: 5px; 
+            font-size: 1.2rem; 
+            text-decoration: none; 
+            color: white; 
+            display: block; 
+        }
+        .nav-links { 
+            display: flex; 
+            list-style: none; 
+            gap: 2.5rem; 
+            align-items: center; 
+        }
+        .nav-item { 
+            text-decoration: none; 
+            color: var(--accent-silver); 
+            font-size: 11px; 
+            letter-spacing: 2px; 
+            text-transform: uppercase; 
+            transition: color 0.3s;
+        }
+        .nav-item:hover { color: var(--accent); }
+
+        /* --- Hero Section --- */
+        .hero {
+            padding: 100px 5% 60px;
+            text-align: center;
+            background: linear-gradient(135deg, #051b15 0%, #050505 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(0, 200, 150, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero-subtitle {
+            color: var(--accent);
+            letter-spacing: 4px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+        .hero h1 { 
+            font-size: 4rem; 
+            font-weight: 900; 
+            letter-spacing: -2px; 
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+        .hero-description {
+            color: var(--accent-silver);
+            max-width: 700px;
+            margin: 25px auto 40px;
+            font-size: 16px;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+        .hero-highlight {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 18px;
+            margin-top: 30px;
+        }
+
+        /* --- Features Section --- */
+        .features {
+            padding: 80px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 50px;
+            color: white;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        .feature-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.3s;
+        }
+        .feature-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+        .feature-icon {
+            font-size: 40px;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: white;
+        }
+        .feature-desc {
+            color: var(--accent-silver);
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        /* --- How It Works Section --- */
+        .how-it-works {
+            padding: 80px 5%;
+            background: rgba(255, 255, 255, 0.02);
+        }
+        .steps-container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        .step {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--accent);
+            color: #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 900;
+            margin: 0 auto 20px;
+        }
+        .step-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: white;
+        }
+        .step-desc {
+            color: var(--accent-silver);
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        /* --- Installment Calculator --- */
+        .calculator {
+            padding: 80px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .calculator-container {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-light);
+            border-radius: 24px;
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        @media (max-width: 768px) {
+            .calculator-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        .calculator-inputs, .calculator-results {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .input-group label {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--accent-silver);
+        }
+        .input-group input, .input-group select {
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            color: white;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        .input-group input:focus, .input-group select:focus {
+            border-color: var(--accent);
+        }
+        .slider-container {
+            margin-top: 10px;
+        }
+        .slider {
+            width: 100%;
+            height: 8px;
+            -webkit-appearance: none;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            outline: none;
+        }
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            background: var(--accent);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .slider-values {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            color: var(--accent-silver);
+            font-size: 12px;
+        }
+        .result-card {
+            background: rgba(0, 200, 150, 0.1);
+            border: 1px solid var(--accent);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+        .result-title {
+            font-size: 14px;
+            color: var(--accent-silver);
+            margin-bottom: 10px;
+        }
+        .result-value {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--accent);
+        }
+        .result-note {
+            font-size: 12px;
+            color: var(--accent-silver);
+            margin-top: 10px;
+            line-height: 1.5;
+        }
+
+        /* --- Terms Section --- */
+        .terms {
+            padding: 80px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .terms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .term-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 25px;
+        }
+        .term-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: white;
+        }
+        .term-desc {
+            color: var(--accent-silver);
+            line-height: 1.6;
+            font-size: 14px;
+        }
+        .term-warning {
+            border-left: 4px solid var(--danger);
+            padding-left: 15px;
+            margin-top: 20px;
+        }
+
+        /* --- CTA Section --- */
+        .cta-section {
+            padding: 80px 5%;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(0, 200, 150, 0.1) 0%, transparent 100%);
+        }
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            color: white;
+        }
+        .cta-description {
+            color: var(--accent-silver);
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .cta-btn {
+            padding: 18px 40px;
+            background: var(--accent);
+            color: #000;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 900;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 200, 150, 0.2);
+        }
+        .cta-btn.secondary {
+            background: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: #080808;
+            padding: 60px 5% 40px;
+            text-align: center;
+            border-top: 1px solid var(--border-light);
+        }
+        .footer-logo {
+            font-weight: 900;
+            letter-spacing: 5px;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        .footer-contact {
+            color: var(--accent-silver);
+            font-size: 12px;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+        .whatsapp-direct {
+            background: #25d366;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        /* --- WhatsApp Floating Button --- */
+        .wa-float {
+            position: fixed; 
+            bottom: 30px; 
+            right: 30px;
+            background: #25d366; 
+            color: white; 
+            width: 60px; 
+            height: 60px;
+            border-radius: 50px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            font-size: 30px; 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3); 
+            z-index: 1001;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+        .wa-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .section-title { font-size: 2rem; }
+            .steps-container { flex-direction: column; }
+            .cta-buttons { flex-direction: column; }
+            .nav-links { gap: 1.5rem; }
+            .hero { padding: 70px 5% 40px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo-box">
+        <a href="index.html" class="logo">MINDWAY</a>
+    </div>
+
+    <nav>
+        <ul class="nav-links">
+            <li><a href="index.html" class="nav-item">Home</a></li>
+            <li><a href="about.html" class="nav-item">About Us</a></li>
+            <li><a href="laptop.html" class="nav-item">Laptops</a></li>
+            <li><a href="Phone.html" class="nav-item">Phones</a></li>
+        
+  
+           
+        </ul>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-subtitle">Flexible Payment Solution</div>
+    <h1>Pay Small Small<br>Get Your Tech Now!</h1>
+    <p class="hero-description">
+        Can't afford to pay for your desired laptop or phone all at once? No problem! 
+        With Mindway Tech's "Pay Small Small" plan, you can make convenient installment payments 
+        and receive your product immediately once payment is complete. No hidden charges, no interest!
+    </p>
+    <div class="hero-highlight">
+        <i class="fas fa-check-circle"></i> Zero Interest • Flexible Payments • Product Reserved For You
+    </div>
+</section>
+
+<section class="features">
+    <h2 class="section-title">Why Choose Pay Small Small?</h2>
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-money-bill-wave"></i>
+            </div>
+            <h3 class="feature-title">No Interest Charges</h3>
+            <p class="feature-desc">
+                Pay exactly the product price in installments. No additional interest or hidden fees. 
+                What you see is what you pay.
+            </p>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-calendar-alt"></i>
+            </div>
+            <h3 class="feature-title">Flexible Payment Schedule</h3>
+            <p class="feature-desc">
+                Choose your payment frequency - weekly, bi-weekly, or monthly. 
+                Adjust the duration to match your financial capacity.
+            </p>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-lock"></i>
+            </div>
+            <h3 class="feature-title">Product Reserved For You</h3>
+            <p class="feature-desc">
+                Once you start payments, we reserve the product for you. 
+                No risk of price changes or stock issues while you're paying.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="how-it-works">
+    <h2 class="section-title">How It Works</h2>
+    <div class="steps-container">
+        <div class="step">
+            <div class="step-number">1</div>
+            <h3 class="step-title">Select Product</h3>
+            <p class="step-desc">
+                Choose any laptop, phone, or accessory from our inventory. 
+                Contact us to confirm availability and total price.
+            </p>
+        </div>
+        
+        <div class="step">
+            <div class="step-number">2</div>
+            <h3 class="step-title">Agree Payment Plan</h3>
+            <p class="step-desc">
+                We'll work with you to create a customized payment schedule 
+                that fits your budget and timeline.
+            </p>
+        </div>
+        
+        <div class="step">
+            <div class="step-number">3</div>
+            <h3 class="step-title">Make Payments</h3>
+            <p class="step-desc">
+                Start making your installment payments via bank transfer, 
+                cash deposit, or mobile money. We track all payments.
+            </p>
+        </div>
+        
+        <div class="step">
+            <div class="step-number">4</div>
+            <h3 class="step-title">Collect Product</h3>
+            <p class="step-desc">
+                Once final payment is complete, come pick up your product 
+                immediately with full warranty and accessories.
+            </p>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="terms">
+    <h2 class="section-title">Terms and Conditions</h2>
+        
+        <div class="term-card">
+            <h3 class="term-title">Payment Rules</h3>
+            <p class="term-desc">
+                • Minimum 20% down payment required<br>
+                • Maximum payment period: 12 months<br>
+               
+            </p>
+        </div>
+        
+        <div class="term-card">
+            <h3 class="term-title">Product Reservation</h3>
+            <p class="term-desc">
+                • Product price locked at start date<br>
+                • Item reserved exclusively for you<br>
+                • Full warranty applies upon collection<br>
+                • Includes all original accessories
+            </p>
+        </div>
+        
+        <div class="term-card">
+            <h3 class="term-title">Important Notes</h3>
+            <p class="term-desc">
+                • No refunds on completed payments<br>
+                • Product collection only after full payment<br>
+           
+                • Contact us for payment date adjustments
+            </p>
+            <div class="term-warning">
+                <p class="term-desc">
+                    <strong>Note:</strong> failure to collect the product after payment completion 
+                    product will be held for a maximum of 6 months . After this period , Mindway Tech
+                     reserves the right to resell the item 
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <h2 class="cta-title">Ready to Get Started?</h2>
+    <p class="cta-description">
+        Contact us now to reserve your preferred product and start your 
+        "Pay Small Small" journey. Our team is ready to create a payment 
+        plan that works for you.
+    </p>
+    <div class="cta-buttons">
+        <a href="https://wa.me/2349061407613?text=Hello%20Mindway%20Tech!%20I'm%20interested%20in%20the%20Pay%20Small%20Small%20plan.%20Please%20provide%20more%20information." class="cta-btn" target="_blank">
+            <i class="fab fa-whatsapp"></i> Start on WhatsApp
+        </a>
+        <a href="tel:+2349061407613" class="cta-btn secondary">
+            <i class="fas fa-phone"></i> Call Us Now
+        </a>
+        <a href="phones.html" class="cta-btn secondary">
+            <i class="fas fa-mobile-alt"></i> Browse Products
+        </a>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-logo">MINDWAY TECH</div>
+    <p class="footer-contact">
+        Abuja, Nigeria | +234 906 140 7613<br>
+        Open Monday - Saturday: 9AM - 7PM<br>
+        Email: info@mindwaytech.com
+    </p>
+    <p style="color: var(--accent-silver); font-size: 12px; max-width: 600px; margin: 0 auto 20px;">
+        "Pay Small Small" is a flexible payment arrangement, not a loan. All products remain property 
+        of Mindway Tech until final payment is completed. Prices and terms are subject to change.
+    </p>
+    <a href="https://wa.me/2349061407613" class="whatsapp-direct" target="_blank">
+        <i class="fab fa-whatsapp"></i> Chat Directly on WhatsApp
+    </a>
+</footer>
+
+<a href="https://wa.me/2349061407613" class="wa-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+    // WhatsApp Number
+    const whatsappNumber = "2349061407613";
+
+    // Installment Calculator
+    function updateCalculator() {
+        // Get values from inputs
+        const productPrice = parseInt(document.getElementById('productPrice').value) || 500000;
+        const downPaymentPercent = parseInt(document.getElementById('downPaymentSlider').value) || 20;
+        const duration = parseInt(document.getElementById('paymentDuration').value) || 6;
+        const frequency = document.getElementById('paymentFrequency').value;
+        
+        // Calculate down payment amount
+        const downPaymentAmount = Math.round(productPrice * (downPaymentPercent / 100));
+        const remainingBalance = productPrice - downPaymentAmount;
+        
+        // Calculate installment based on frequency
+        let installmentAmount = 0;
+        let installmentLabel = '';
+        let installmentNote = '';
+        
+        if (frequency === 'weekly') {
+            const weeks = duration * 4; // Approximate weeks in months
+            installmentAmount = Math.ceil(remainingBalance / weeks);
+            installmentLabel = 'Weekly Installment';
+            installmentNote = `${weeks} payments of ₦${installmentAmount.toLocaleString()} each`;
+        } else if (frequency === 'biweekly') {
+            const fortnights = duration * 2; // Every 2 weeks
+            installmentAmount = Math.ceil(remainingBalance / fortnights);
+            installmentLabel = 'Bi-Weekly Installment';
+            installmentNote = `${fortnights} payments of ₦${installmentAmount.toLocaleString()} each`;
+        } else { // monthly
+            installmentAmount = Math.ceil(remainingBalance / duration);
+            installmentLabel = 'Monthly Installment';
+            installmentNote = `${duration} payments of ₦${installmentAmount.toLocaleString()} each`;
+        }
+        
+        // Update display
+        document.getElementById('totalPrice').textContent = `₦${productPrice.toLocaleString()}`;
+        document.getElementById('downPayment').value = downPaymentAmount;
+        document.getElementById('initialPayment').textContent = `₦${downPaymentAmount.toLocaleString()}`;
+        document.getElementById('remainingBalance').textContent = `₦${remainingBalance.toLocaleString()}`;
+        document.getElementById('installmentLabel').textContent = installmentLabel;
+        document.getElementById('installmentAmount').textContent = `₦${installmentAmount.toLocaleString()}`;
+        document.getElementById('installmentNote').textContent = installmentNote;
+    }
+
+    // Sync slider and input
+    document.getElementById('downPaymentSlider').addEventListener('input', function() {
+        const productPrice = parseInt(document.getElementById('productPrice').value) || 500000;
+        const percent = parseInt(this.value);
+        const amount = Math.round(productPrice * (percent / 100));
+        document.getElementById('downPayment').value = amount;
+        updateCalculator();
+    });
+
+    document.getElementById('downPayment').addEventListener('input', function() {
+        const productPrice = parseInt(document.getElementById('productPrice').value) || 500000;
+        const amount = parseInt(this.value) || 0;
+        const percent = Math.min(50, Math.round((amount / productPrice) * 100));
+        document.getElementById('downPaymentSlider').value = percent;
+        updateCalculator();
+    });
+
+    // Add event listeners to other inputs
+    document.getElementById('productPrice').addEventListener('input', updateCalculator);
+    document.getElementById('paymentDuration').addEventListener('change', updateCalculator);
+    document.getElementById('paymentFrequency').addEventListener('change', updateCalculator);
+
+    // Initialize calculator
+    document.addEventListener('DOMContentLoaded', function() {
+        updateCalculator();
+        
+        // Add sample payment plan examples
+        const examples = [
+            {price: 750000, duration: 6, frequency: 'monthly', down: 30},
+            {price: 1200000, duration: 8, frequency: 'biweekly', down: 25},
+            {price: 350000, duration: 4, frequency: 'weekly', down: 20}
+        ];
+        
+        // Optional: Add example buttons
+        const examplesContainer = document.createElement('div');
+        examplesContainer.style.marginTop = '30px';
+        examplesContainer.style.textAlign = 'center';
+        examplesContainer.innerHTML = `
+            <div style="color: var(--accent-silver); margin-bottom: 10px; font-size: 14px;">
+                <i class="fas fa-lightbulb"></i> Try these examples:
+            </div>
+            <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                ${examples.map((ex, i) => `
+                    <button class="example-btn" style="
+                        background: rgba(0, 200, 150, 0.1);
+                        border: 1px solid var(--accent);
+                        color: var(--accent);
+                        padding: 8px 16px;
+                        border-radius: 20px;
+                        font-size: 12px;
+                        cursor: pointer;
+                    ">
+                        ₦${(ex.price/1000).toFixed(0)}K over ${ex.duration} months
+                    </button>
+                `).join('')}
+            </div>
+        `;
+        
+        document.querySelector('.calculator').appendChild(examplesContainer);
+        
+        // Add click handlers to example buttons
+        setTimeout(() => {
+            const exampleBtns = document.querySelectorAll('.example-btn');
+            exampleBtns.forEach((btn, i) => {
+                btn.addEventListener('click', () => {
+                    const ex = examples[i];
+                    document.getElementById('productPrice').value = ex.price;
+                    document.getElementById('paymentDuration').value = ex.duration;
+                    document.getElementById('paymentFrequency').value = ex.frequency;
+                    document.getElementById('downPaymentSlider').value = ex.down;
+                    updateCalculator();
+                });
+            });
+        }, 100);
+    });
+
+    // WhatsApp message generator for payment plans
+    function generateWhatsAppMessage() {
+        const productPrice = parseInt(document.getElementById('productPrice').value) || 500000;
+        const downPayment = parseInt(document.getElementById('downPayment').value) || 100000;
+        const duration = document.getElementById('paymentDuration').value;
+        const frequency = document.getElementById('paymentFrequency').value;
+        
+        const frequencyText = frequency === 'weekly' ? 'weekly' : 
+                             frequency === 'biweekly' ? 'every 2 weeks' : 'monthly';
+        
+        return `Hello Mindway Tech! I'm interested in the "Pay Small Small" plan.\n\n` +
+               `I'd like to pay for a product worth: ₦${productPrice.toLocaleString()}\n` +
+               `With initial payment of: ₦${downPayment.toLocaleString()}\n` +
+               `And pay the balance over ${duration} months (${frequencyText}).\n\n` +
+               `Please provide more details and help me set up this payment plan.`;
+    }
+
+    // Update WhatsApp CTA button
+    document.addEventListener('DOMContentLoaded', function() {
+        const whatsappBtn = document.querySelector('.cta-buttons .cta-btn');
+        if (whatsappBtn) {
+            whatsappBtn.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(generateWhatsAppMessage())}`;
+        }
+        
+        // Update WhatsApp link when calculator changes
+        const calculatorInputs = document.querySelectorAll('.calculator-inputs input, .calculator-inputs select');
+        calculatorInputs.forEach(input => {
+            input.addEventListener('change', () => {
+                const whatsappBtn = document.querySelector('.cta-buttons .cta-btn');
+                if (whatsappBtn) {
+                    whatsappBtn.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(generateWhatsAppMessage())}`;
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+</html>

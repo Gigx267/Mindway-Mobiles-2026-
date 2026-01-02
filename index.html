@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MINDWAY | Next-Gen Gadgets Abuja</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --accent: #00f2ff;
+            --accent-silver: #a1a1a6;
+            --tech-black: #050505;
+            --clinical-white: #ffffff;
+            --border-light: rgba(255, 255, 255, 0.1);
+            --animation-timing: cubic-bezier(0.2, 1, 0.2, 1);
+            --glass: rgba(10, 10, 10, 0.8);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: var(--tech-black); 
+            color: white;
+            overflow-x: hidden; 
+        }
+
+        /* --- Navigation --- */
+        header {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            padding: 1rem 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            position: sticky; top: 0; z-index: 1000;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .logo-box .logo { font-weight: 900; letter-spacing: 5px; font-size: 1.2rem; }
+        .status-tag { font-size: 9px; letter-spacing: 2px; color: var(--accent); text-transform: uppercase; }
+
+        .nav-links { display: flex; list-style: none; gap: 2.5rem; align-items: center; }
+        .nav-item { 
+            text-decoration: none; color: var(--accent-silver); 
+            font-size: 11px; letter-spacing: 2px; transition: 0.3s; 
+            text-transform: uppercase;
+        }
+        .nav-item:hover { color: var(--accent); text-shadow: 0 0 10px var(--accent); }
+        
+        .btn-connect {
+            border: 1px solid var(--accent);
+            padding: 8px 20px;
+            border-radius: 4px;
+        }
+
+        /* --- Bento Grid --- */
+        .hero-container { padding: 20px; perspective: 2000px; }
+        .hero-grid {
+            display: grid;
+            height: 85vh;
+            min-height: 650px;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .bento-item {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            background: #111;
+            border: 1px solid var(--border-light);
+            transition: transform 0.6s var(--animation-timing), box-shadow 0.6s var(--animation-timing);
+        }
+
+        .item-main {
+            grid-column: 1 / 4; grid-row: 1 / 3;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent), 
+                        url('https://i.pinimg.com/736x/0e/d1/75/0ed1758cfaa868f0ca9c328ba7c3b433.jpg');
+            background-size: cover; background-position: center;
+            display: flex; flex-direction: column; justify-content: flex-end;
+            padding: 50px;
+        }
+
+        .item-top-right {
+            grid-column: 4 / 6; grid-row: 1 / 2;
+            background: url('https://i.pinimg.com/736x/e1/f0/a5/e1f0a56f20ce3f77c84c08fad4602e96.jpg');
+            background-size: cover;
+        }
+
+        .item-stat {
+            grid-column: 4 / 5; grid-row: 2 / 3;
+            padding: 30px; display: flex; flex-direction: column; justify-content: center;
+        }
+
+        .item-info {
+            grid-column: 5 / 6; grid-row: 2 / 3;
+            background: linear-gradient(135deg, #1a1a1a, #000);
+            padding: 20px; display: flex; align-items: center; text-align: center;
+        }
+
+        /* Hover Effects */
+        .hero-grid:hover .bento-item { transform: rotateY(-2deg) rotateX(1deg); }
+        .bento-item:hover {
+            transform: translateZ(50px) scale(1.02) !important;
+            z-index: 10; border-color: var(--accent);
+            box-shadow: 0 20px 40px rgba(0,242,255,0.2);
+        }
+
+        /* Typography */
+        h1 { font-size: clamp(2rem, 5vw, 4.5rem); line-height: 1; margin-bottom: 1rem; }
+        .location-text { color: var(--accent-silver); font-size: 0.9rem; margin-bottom: 2rem; max-width: 80%; }
+        
+        .cta-btn {
+            display: inline-block; padding: 15px 35px;
+            background: white; color: black; font-weight: 900;
+            text-decoration: none; font-size: 12px; letter-spacing: 2px;
+            text-transform: uppercase; border-radius: 50px; transition: 0.3s;
+        }
+        .cta-btn:hover { background: var(--accent); transform: translateY(-3px); }
+
+        /* Inventory */
+        .collection { padding: 80px 5%; max-width: 1400px; margin: 0 auto; }
+        .product-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;
+        }
+        .product-card {
+            background: #111; border: 1px solid var(--border-light);
+            border-radius: 20px; padding: 20px; transition: 0.3s;
+        }
+        .product-card:hover { border-color: var(--accent); transform: translateY(-5px); }
+        .product-card img { width: 100%; height: 250px; object-fit: contain; margin-bottom: 20px; }
+
+        /* Mobile */
+        @media (max-width: 900px) {
+            header { padding: 1rem 2rem; }
+            .nav-links { display: none; }
+            .hero-grid { display: flex; flex-direction: column; height: auto; }
+            .item-main { height: 400px; padding: 30px; }
+            .item-top-right, .item-stat, .item-info { height: 200px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo-box">
+        <div class="logo">MINDWAY</div>
+        <div class="status-tag"> Abuja Dealer For Laptops & Phones </div>
+    </div>
+
+    <nav>
+        <ul class="nav-links">
+                <li><a href="about.html" class="nav-item">About us </a></li>
+            <li><a href="laptop.html" class="nav-item">Laptops</a></li>
+            <li><a href="Phone.html" class="nav-item">Phones</a></li>
+            <li><a href="paysmall.html" class="nav-item">Pay Small Small </a></li>
+            <li><a href="Contact.html" class="nav-item btn-connect">Contact us </a></li>
+        </ul>
+    </nav>
+</header>
+<div class="hero-container">
+    <section class="hero-grid">
+        <div class="bento-item item-main">
+            <h1>Buy, Fix <br>or Swap  </h1>
+            <p class="location-text">Basement Shop No.5 Buchanan Mall, Aminu Kano Crescent, Wuse 2, Abuja</p>
+            <div><a href="laptop.html" class="cta-btn">View Inventory</a></div>
+        </div>
+
+        <div class="bento-item item-top-right"></div>
+
+        <div class="bento-item item-stat" id="about">
+            <h2 style="color: var(--accent); margin-bottom: 10px;">WHO WE ARE</h2>
+            <p style="font-size: 13px; line-height: 1.6; color: var(--accent-silver);">
+                The premier destination for high-end tech in Abuja. We specialize in sales, expert repairs, and trade-ins.
+            </p>
+        </div>
+
+        <div class="bento-item item-info">
+            <div style="width: 100%;">
+                <i class="fas fa-shield-halved" style="font-size: 1.5rem; color: var(--accent); margin-bottom: 10px;"></i>
+                <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px;">Quality Guaranteed</p>
+                <p style="font-size: 10px; color: var(--accent-silver); margin-top: 5px;">Every device undergoes a 25-point inspection.</p>
+            </div>
+        </div>
+    </section>
+</div>
+<section id="categories" class="categories-section">
+    <div class="section-header">
+        <div>
+            <span class="sub-heading">Product Matrix</span>
+            <h2>Browse Departments</h2>
+        </div>
+    </div>
+
+    <div class="category-grid">
+        <a href="laptop.html" class="cat-card-visual" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.9)), url('https://i.pinimg.com/736x/e0/0a/14/e00a146850d59e2c67c804167e4c50c7.jpg');">
+            <div class="cat-tag">Available Now</div>
+            <div class="cat-info">
+                <h3>Workstations</h3>
+                <p>Laptops & MacBooks</p>
+                <span class="cat-btn">Explore <i class="fas fa-chevron-right"></i></span>
+            </div>
+        </a>
+
+        <a href="Phone.html" class="cat-card-visual" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.9)), url('https://i.pinimg.com/736x/e1/30/c3/e130c307f97cbf13950c9f3b32750203.jpg');">
+            <div class="cat-tag">New Stock</div>
+            <div class="cat-info">
+                <h3>Mobile Units</h3>
+                <p>iOS & Android Devices</p>
+                <span class="cat-btn">Explore <i class="fas fa-chevron-right"></i></span>
+            </div>
+        </a>
+
+        <a href="Accesories.html" class="cat-card-visual" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&q=80');">
+             <div class="cat-tag">Original Gear</div>
+            <div class="cat-info">
+                <h3>Accessories</h3>
+                <p>Augmentations & Audio</p>
+                <span class="cat-btn">Explore <i class="fas fa-chevron-right"></i></span>
+            </div>
+        </a>
+
+     
+    </div>
+</section>
+
+
+<section id="about" class="about-section">
+    <div class="about-content">
+        <div class="about-visual">
+            <div class="experience-badge">
+                <span class="years">Premium</span>
+                <span class="label">Tech Partner</span>
+            </div>
+            <img src="https://i.pinimg.com/1200x/2e/bf/2e/2ebf2e286a6d6a84a5788fec96164570.jpg " alt="Tech Studio">
+        </div>
+        <div class="about-text">
+            <span class="sub-heading">Experience the Future</span>
+            <h2>Mindway Mobiles</h2>
+            <p>From the latest smartphones to cutting-edge laptops and top-notch repair services, we are your one-stop solution in Abuja. Founded with a passion for technology, we empower our community with the finest tech available.</p>
+            
+            <div class="service-stats">
+                <div class="stat-box">
+                    <i class="fas fa-tools"></i>
+                    <p>Expert Fixes</p>
+                </div>
+                <div class="stat-box">
+                    <i class="fas fa-sync-alt"></i>
+                    <p>Easy Swap</p>
+                </div>
+                <div class="stat-box">
+                    <i class="fas fa-check-circle"></i>
+                    <p>Certified</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.about-section { padding: 100px 5%; background: #050505; }
+.about-content { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 60px; 
+    align-items: center; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+}
+.about-visual { position: relative; border-radius: 30px; overflow: hidden; border: 1px solid var(--border-light); }
+.about-visual img { width: 100%; height: 450px; object-fit: cover; filter: grayscale(30%); }
+.experience-badge { 
+    position: absolute; top: 20px; left: 20px; 
+    background: var(--accent); color: #000; padding: 15px; 
+    border-radius: 20px; text-align: center; z-index: 2;
+}
+.experience-badge .years { display: block; font-weight: 900; font-size: 1.2rem; }
+.experience-badge .label { font-size: 10px; text-transform: uppercase; font-weight: 700; }
+
+.about-text h2 { font-size: 3rem; font-weight: 900; margin: 10px 0 20px; letter-spacing: -1px; }
+.sub-heading { color: var(--accent); font-size: 12px; letter-spacing: 4px; text-transform: uppercase; font-weight: 700; }
+.about-text p { color: var(--accent-silver); line-height: 1.8; margin-bottom: 30px; font-size: 1.1rem; }
+
+.service-stats { display: flex; gap: 20px; }
+.stat-box { 
+    background: #111; padding: 20px; border-radius: 15px; 
+    flex: 1; text-align: center; border: 1px solid var(--border-light);
+}
+.stat-box i { color: var(--accent); font-size: 1.5rem; margin-bottom: 10px; }
+.stat-box p { font-size: 11px; margin: 0; text-transform: uppercase; color: white; }
+
+@media (max-width: 900px) { .about-content { grid-template-columns: 1fr; } }
+</style>
+
+
+<style>
+.categories-section {
+    padding: 60px 5%;
+    background: #050505;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.cat-card-visual {
+    position: relative;
+    height: 450px;
+    border-radius: 24px;
+    background-size: cover;
+    background-position: center;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 30px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: transform 0.6s var(--animation-timing), border-color 0.4s;
+}
+
+.cat-card-visual:hover {
+    transform: scale(1.02);
+    border-color: var(--accent);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+/* Floating Tag */
+.cat-tag {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 242, 255, 0.2);
+    backdrop-filter: blur(10px);
+    color: var(--accent);
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border: 1px solid var(--accent);
+}
+
+.cat-info h3 {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 900;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.cat-info p {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+.cat-btn {
+    display: inline-block;
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding-bottom: 5px;
+    border-bottom: 2px solid var(--accent);
+    transition: 0.3s;
+}
+
+.cat-card-visual:hover .cat-btn {
+    color: var(--accent);
+    padding-left: 10px;
+}
+
+/* Smooth zoom effect on background */
+.cat-card-visual::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: inherit;
+    z-index: -1;
+    transition: transform 0.8s;
+}
+
+.cat-card-visual:hover::before {
+    transform: scale(1.1);
+}
+
+@media (max-width: 600px) {
+    .cat-card-visual {
+        height: 350px;
+    }
+}
+</style>
+</body>
+</html>

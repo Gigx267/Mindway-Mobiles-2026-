@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete iPhone Inventory | Mindway Tech Abuja</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --apple-blue: #007aff;
+            --apple-gray: #8e8e93;
+            --apple-black: #000000;
+            --apple-white: #ffffff;
+            --apple-silver: #f2f2f7;
+            --apple-gold: #ffd700;
+            --apple-graphite: #5c5c5c;
+            --apple-purple: #5856d6;
+            --apple-pink: #ff2d55;
+            --apple-green: #34c759;
+            --accent: var(--apple-blue);
+            --accent-silver: var(--apple-gray);
+            --tech-black: var(--apple-black);
+            --clinical-white: var(--apple-white);
+            --border-light: rgba(255, 255, 255, 0.15);
+            --glass: rgba(0, 0, 0, 0.85);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; 
+            background: var(--tech-black); 
+            color: white;
+            overflow-x: hidden; 
+        }
+
+        /* --- Global Nav --- */
+        header {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            padding: 1rem 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            position: sticky; top: 0; z-index: 1000;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .logo-box .logo { 
+            font-weight: 900; 
+            letter-spacing: 5px; 
+            font-size: 1.2rem; 
+            text-decoration: none; 
+            color: white; 
+            display: block; 
+        }
+        .nav-links { 
+            display: flex; 
+            list-style: none; 
+            gap: 2.5rem; 
+            align-items: center; 
+        }
+        .nav-item { 
+            text-decoration: none; 
+            color: var(--accent-silver); 
+            font-size: 11px; 
+            letter-spacing: 2px; 
+            text-transform: uppercase; 
+            transition: color 0.3s;
+        }
+        .nav-item:hover { color: var(--accent); }
+
+        /* --- Hero Section --- */
+        .iphone-hero {
+            padding: 100px 5% 50px;
+            text-align: center;
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .iphone-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 20%, rgba(0, 122, 255, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero-subtitle {
+            color: var(--accent);
+            letter-spacing: 4px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+        .iphone-hero h1 { 
+            font-size: 4.5rem; 
+            font-weight: 900; 
+            letter-spacing: -3px; 
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #ffffff, var(--apple-gray));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-description {
+            color: var(--accent-silver);
+            max-width: 700px;
+            margin: 25px auto 40px;
+            font-size: 15px;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        /* --- iPhone Features Bar --- */
+        .features-bar {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 30px 5%;
+            background: rgba(255, 255, 255, 0.03);
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
+            flex-wrap: wrap;
+        }
+        .feature-item {
+            text-align: center;
+            flex: 1;
+            min-width: 150px;
+        }
+        .feature-icon {
+            font-size: 24px;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+        .feature-title {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+        .feature-desc {
+            font-size: 11px;
+            color: var(--accent-silver);
+            line-height: 1.5;
+        }
+
+        /* --- Filter Bar --- */
+        .filter-bar {
+            display: flex; 
+            justify-content: center; 
+            gap: 12px; 
+            padding: 30px 5%;
+            position: sticky; 
+            top: 75px; 
+            background: var(--tech-black); 
+            z-index: 900;
+            flex-wrap: wrap;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .filter-btn {
+            background: transparent; 
+            border: 1px solid var(--border-light); 
+            color: white;
+            padding: 10px 22px; 
+            border-radius: 50px; 
+            cursor: pointer; 
+            font-size: 11px;
+            letter-spacing: 1px; 
+            text-transform: uppercase; 
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+        .filter-btn.active, .filter-btn:hover { 
+            background: var(--accent); 
+            color: #000; 
+            border-color: var(--accent); 
+            font-weight: 700; 
+        }
+
+        /* --- Series Badges --- */
+        .series-badges {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px 5%;
+            flex-wrap: wrap;
+        }
+        .series-badge {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-light);
+            color: var(--accent-silver);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .series-badge.active, .series-badge:hover {
+            background: var(--accent);
+            color: #000;
+            border-color: var(--accent);
+        }
+
+        /* --- Product Grid --- */
+        .inventory-section { 
+            padding: 40px 5% 100px; 
+            max-width: 1600px; 
+            margin: 0 auto; 
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .iphone-card {
+            background: #0d0d0d;
+            border: 1px solid var(--border-light);
+            border-radius: 24px;
+            padding: 25px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        .iphone-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 15px 30px rgba(0, 122, 255, 0.15);
+        }
+
+        .iphone-badge {
+            position: absolute; 
+            top: 15px; 
+            left: 15px;
+            background: rgba(255,255,255,0.05); 
+            color: var(--accent-silver);
+            padding: 4px 12px; 
+            border-radius: 100px; 
+            font-size: 10px; 
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .badge-new { background: var(--accent); color: #000; }
+        .badge-preowned { background: #ff9500; color: #000; }
+        .badge-refurbished { background: var(--apple-green); color: #000; }
+        .badge-limited { background: var(--apple-purple); color: white; }
+
+        .iphone-year {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 10px;
+            color: var(--accent-silver);
+            background: rgba(255,255,255,0.05);
+            padding: 3px 10px;
+            border-radius: 100px;
+            font-weight: 700;
+        }
+
+        .iphone-color {
+            display: flex;
+            align-items: center;
+            margin-top: 5px;
+            margin-bottom: 15px;
+        }
+        .color-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            margin-right: 8px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .color-name {
+            font-size: 10px;
+            color: var(--accent-silver);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .iphone-info h3 { 
+            font-size: 1.4rem; 
+            font-weight: 700; 
+            margin-bottom: 5px; 
+            margin-top: 10px;
+        }
+        .iphone-series {
+            color: var(--accent);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .specs { 
+            font-size: 13px; 
+            color: var(--accent-silver); 
+            margin-bottom: 15px; 
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+        .spec-highlight {
+            color: var(--accent);
+            font-weight: 600;
+        }
+        
+        .storage-options {
+            display: flex;
+            gap: 8px;
+            margin: 10px 0;
+            flex-wrap: wrap;
+        }
+        .storage-badge {
+            background: rgba(255,255,255,0.05);
+            color: var(--accent-silver);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .storage-badge.active, .storage-badge:hover {
+            background: var(--accent);
+            color: #000;
+        }
+        
+        .price-container {
+            margin: 20px 0;
+        }
+        .price-tag { 
+            font-size: 1.6rem; 
+            font-weight: 900; 
+            color: var(--accent); 
+            display: block; 
+        }
+        .price-note {
+            font-size: 10px;
+            color: var(--accent-silver);
+            margin-top: 5px;
+        }
+
+        .buy-btn {
+            width: 100%; 
+            padding: 15px; 
+            background: white; 
+            color: black;
+            text-align: center; 
+            text-decoration: none; 
+            border-radius: 12px;
+            font-size: 12px; 
+            font-weight: 900; 
+            text-transform: uppercase;
+            letter-spacing: 1px; 
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        .buy-btn:hover { 
+            background: var(--accent); 
+            transform: scale(1.02);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: #080808;
+            padding: 60px 5% 40px;
+            text-align: center;
+            border-top: 1px solid var(--border-light);
+        }
+        .footer-logo {
+            font-weight: 900;
+            letter-spacing: 5px;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        .footer-contact {
+            color: var(--accent-silver);
+            font-size: 12px;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+        .whatsapp-direct {
+            background: #25d366;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        /* --- WhatsApp Floating Button --- */
+        .wa-float {
+            position: fixed; 
+            bottom: 30px; 
+            right: 30px;
+            background: #25d366; 
+            color: white; 
+            width: 60px; 
+            height: 60px;
+            border-radius: 50px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            font-size: 30px; 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3); 
+            z-index: 1001;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+        .wa-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            .iphone-hero h1 { font-size: 2.8rem; }
+            .filter-bar, .series-badges { overflow-x: auto; justify-content: flex-start; padding: 20px; }
+            .grid { grid-template-columns: 1fr; }
+            .features-bar { gap: 20px; }
+            .nav-links { gap: 1.5rem; }
+            .iphone-hero { padding: 70px 5% 30px; }
+        }
+
+        /* --- Animation --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .iphone-card {
+            animation: fadeIn 0.5s ease-out forwards;
+            opacity: 0;
+        }
+        
+        .iphone-card:nth-child(1) { animation-delay: 0.1s; }
+        .iphone-card:nth-child(2) { animation-delay: 0.2s; }
+        .iphone-card:nth-child(3) { animation-delay: 0.3s; }
+        .iphone-card:nth-child(4) { animation-delay: 0.4s; }
+        .iphone-card:nth-child(5) { animation-delay: 0.5s; }
+        .iphone-card:nth-child(6) { animation-delay: 0.6s; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo-box">
+        <a href="index.html" class="logo">MINDWAY</a>
+    </div>
+
+    <nav>
+        <ul class="nav-links">
+               <li><a href="about.html" class="nav-item">About  </a></li>
+            <li><a href="laptop.html" class="nav-item">Laptops</a></li>
+    
+            <li><a href="paysmall.html" class="nav-item">Pay Small Small </a></li>
+            <li><a href="Contact.html" class="nav-item btn-connect">Contact us </a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="iphone-hero">
+    <div class="hero-subtitle">Exclusive Phone Collection</div>
+    <h1>Phone Inventory</h1>
+    <p class="hero-description">
+        Explore our premium selection of Phones from iPhone 12 to the latest iPhone 15 series. 
+        All devices are certified, come with original accessories, and include 6 months warranty. 
+       
+    </p>
+</section>
+
+<div class="features-bar">
+    <div class="feature-item">
+        <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+        <div class="feature-title">6-Month Warranty</div>
+        <div class="feature-desc">All iPhones come with warranty</div>
+    </div>
+    <div class="feature-item">
+        <div class="feature-icon"><i class="fas fa-box-open"></i></div>
+        <div class="feature-title">Original Box</div>
+        <div class="feature-desc">Includes original packaging</div>
+    </div>
+    <div class="feature-item">
+        <div class="feature-icon"><i class="fas fa-charging-station"></i></div>
+        <div class="feature-title">Charger Included</div>
+        <div class="feature-desc">Original charger and cable</div>
+    </div>
+    <div class="feature-item">
+        <div class="feature-icon"><i class="fas fa-battery-full"></i></div>
+        <div class="feature-title">Battery Health</div>
+        <div class="feature-desc">Minimum 85% battery health</div>
+    </div>
+</div>
+
+<div class="filter-bar">
+    <button class="filter-btn active" onclick="filteriPhones('all')">All iPhones</button>
+    <button class="filter-btn" onclick="filteriPhones('15')">iPhone 15 Series</button>
+    <button class="filter-btn" onclick="filteriPhones('14')">iPhone 14 Series</button>
+    <button class="filter-btn" onclick="filteriPhones('13')">iPhone 13 Series</button>
+    <button class="filter-btn" onclick="filteriPhones('12')">iPhone 12 Series</button>
+    <button class="filter-btn" onclick="filteriPhones('pro')">Pro Models</button>
+    <button class="filter-btn" onclick="filteriPhones('max')">Max/Plus</button>
+    <button class="filter-btn" onclick="filteriPhones('new')">New Arrivals</button>
+    <button class="filter-btn" onclick="filteriPhones('preowned')">Pre-Owned</button>
+</div>
+
+<div class="series-badges">
+    <div class="series-badge active" onclick="filteriPhones('all')">All Series</div>
+    <div class="series-badge" onclick="filteriPhones('15')">iPhone 15</div>
+    <div class="series-badge" onclick="filteriPhones('14')">iPhone 14</div>
+    <div class="series-badge" onclick="filteriPhones('13')">iPhone 13</div>
+    <div class="series-badge" onclick="filteriPhones('12')">iPhone 12</div>
+    <div class="series-badge" onclick="filteriPhones('se')">iPhone SE</div>
+</div>
+
+<main class="inventory-section">
+    <div class="grid" id="iphoneGrid">
+        <!-- iPhones will be inserted here by JavaScript -->
+    </div>
+</main>
+
+<footer>
+    <div class="footer-logo">MINDWAY TECH</div>
+    <p class="footer-contact">
+        Abuja, Nigeria | +234 906 140 7613<br>
+        Open Monday - Saturday: 9AM - 7PM
+    </p>
+    <p style="color: var(--accent-silver); font-size: 12px; max-width: 600px; margin: 0 auto 20px;">
+        All iPhones are professionally inspected, cleaned, and tested. 
+        Includes original charger, cable, and box (when available). 
+        Battery health guaranteed minimum 85%. Prices subject to change.
+    </p>
+    <a href="https://wa.me/2349061407613" class="whatsapp-direct" target="_blank">
+        <i class="fab fa-whatsapp"></i> Chat Directly on WhatsApp
+    </a>
+</footer>
+
+<a href="https://wa.me/2349061407613" class="wa-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+    // WhatsApp Number
+    const whatsappNumber = "2349061407613";
+
+    // iPhone Data Array (Complete Collection)
+    const iphones = [
+        // iPhone 15 Series
+        {
+            id: 1,
+            name: "iPhone 15 Pro Max",
+            series: "15 Pro Max",
+            year: 2023,
+            specs: "A17 Pro chip • 6.7\" Super Retina XDR • Titanium design • 5x Telephoto • Action button",
+            storage: "256GB",
+            colors: ["Natural Titanium", "Blue Titanium", "White Titanium", "Black Titanium"],
+            price: "₦1,250,000",
+            badge: "badge-new",
+            category: ["15", "pro", "max", "new"]
+        },
+        {
+            id: 2,
+            name: "iPhone 15 Pro",
+            series: "15 Pro",
+            year: 2023,
+            specs: "A17 Pro chip • 6.1\" Super Retina XDR • Titanium • 3x Telephoto • USB-C",
+            storage: "128GB",
+            colors: ["Natural Titanium", "Blue Titanium", "White Titanium"],
+            price: "₦1,050,000",
+            badge: "badge-new",
+            category: ["15", "pro", "new"]
+        },
+        {
+            id: 3,
+            name: "iPhone 15 Plus",
+            series: "15 Plus",
+            year: 2023,
+            specs: "A16 Bionic • 6.7\" Super Retina XDR • Dynamic Island • 48MP Main camera",
+            storage: "128GB",
+            colors: ["Black", "Blue", "Green", "Pink", "Yellow"],
+            price: "₦850,000",
+            badge: "badge-new",
+            category: ["15", "max", "new"]
+        },
+        {
+            id: 4,
+            name: "iPhone 15",
+            series: "15",
+            year: 2023,
+            specs: "A16 Bionic • 6.1\" Super Retina XDR • Dynamic Island • USB-C • 48MP camera",
+            storage: "128GB",
+            colors: ["Black", "Blue", "Green", "Pink", "Yellow"],
+            price: "₦750,000",
+            badge: "",
+            category: ["15", "new"]
+        },
+
+        // iPhone 14 Series
+        {
+            id: 5,
+            name: "iPhone 14 Pro Max",
+            series: "14 Pro Max",
+            year: 2022,
+            specs: "A16 Bionic • 6.7\" Always-On display • Dynamic Island • 48MP Main • Emergency SOS",
+            storage: "256GB",
+            colors: ["Space Black", "Deep Purple", "Gold", "Silver"],
+            price: "₦950,000",
+            badge: "badge-preowned",
+            category: ["14", "pro", "max", "preowned"]
+        },
+        {
+            id: 6,
+            name: "iPhone 14 Pro",
+            series: "14 Pro",
+            year: 2022,
+            specs: "A16 Bionic • 6.1\" ProMotion • Dynamic Island • 48MP with Photonic Engine",
+            storage: "128GB",
+            colors: ["Deep Purple", "Gold", "Silver", "Space Black"],
+            price: "₦800,000",
+            badge: "badge-preowned",
+            category: ["14", "pro", "preowned"]
+        },
+        {
+            id: 7,
+            name: "iPhone 14 Plus",
+            series: "14 Plus",
+            year: 2022,
+            specs: "A15 Bionic • 6.7\" Super Retina XDR • All-day battery • Crash Detection",
+            storage: "128GB",
+            colors: ["Midnight", "Starlight", "Blue", "Purple", "Red"],
+            price: "₦680,000",
+            badge: "badge-preowned",
+            category: ["14", "max", "preowned"]
+        },
+        {
+            id: 8,
+            name: "iPhone 14",
+            series: "14",
+            year: 2022,
+            specs: "A15 Bionic • 6.1\" Super Retina XDR • Advanced dual-camera • 5G",
+            storage: "128GB",
+            colors: ["Midnight", "Starlight", "Blue", "Purple", "Red"],
+            price: "₦650,000",
+            badge: "badge-preowned",
+            category: ["14", "preowned"]
+        },
+
+        // iPhone 13 Series
+        {
+            id: 9,
+            name: "iPhone 13 Pro Max",
+            series: "13 Pro Max",
+            year: 2021,
+            specs: "A15 Bionic • 6.7\" ProMotion • Cinematic mode • Pro camera system",
+            storage: "256GB",
+            colors: ["Graphite", "Gold", "Silver", "Sierra Blue"],
+            price: "₦750,000",
+            badge: "badge-refurbished",
+            category: ["13", "pro", "max", "preowned"]
+        },
+        {
+            id: 10,
+            name: "iPhone 13 Pro",
+            series: "13 Pro",
+            year: 2021,
+            specs: "A15 Bionic • 6.1\" ProMotion • Telephoto • Macro photography • 5G",
+            storage: "128GB",
+            colors: ["Graphite", "Gold", "Silver", "Sierra Blue"],
+            price: "₦650,000",
+            badge: "badge-refurbished",
+            category: ["13", "pro", "preowned"]
+        },
+        {
+            id: 11,
+            name: "iPhone 13",
+            series: "13",
+            year: 2021,
+            specs: "A15 Bionic • 6.1\" Super Retina XDR • Dual-camera • Up to 19 hours video",
+            storage: "128GB",
+            colors: ["Midnight", "Starlight", "Pink", "Blue", "Green", "Red"],
+            price: "₦550,000",
+            badge: "badge-refurbished",
+            category: ["13", "preowned"]
+        },
+        {
+            id: 12,
+            name: "iPhone 13 mini",
+            series: "13 mini",
+            year: 2021,
+            specs: "A15 Bionic • 5.4\" Super Retina XDR • Compact size • All-day battery",
+            storage: "128GB",
+            colors: ["Midnight", "Starlight", "Pink", "Blue", "Green"],
+            price: "₦500,000",
+            badge: "badge-refurbished",
+            category: ["13", "preowned"]
+        },
+
+        // iPhone 12 Series
+        {
+            id: 13,
+            name: "iPhone 12 Pro Max",
+            series: "12 Pro Max",
+            year: 2020,
+            specs: "A14 Bionic • 6.7\" Super Retina XDR • Pro camera • LiDAR • MagSafe",
+            storage: "256GB",
+            colors: ["Graphite", "Silver", "Gold", "Pacific Blue"],
+            price: "₦600,000",
+            badge: "badge-refurbished",
+            category: ["12", "pro", "max", "preowned"]
+        },
+        {
+            id: 14,
+            name: "iPhone 12 Pro",
+            series: "12 Pro",
+            year: 2020,
+            specs: "A14 Bionic • 6.1\" Super Retina XDR • Pro camera system • 5G ready",
+            storage: "128GB",
+            colors: ["Graphite", "Silver", "Gold", "Pacific Blue"],
+            price: "₦520,000",
+            badge: "badge-refurbished",
+            category: ["12", "pro", "preowned"]
+        },
+        {
+            id: 15,
+            name: "iPhone 12",
+            series: "12",
+            year: 2020,
+            specs: "A14 Bionic • 6.1\" Super Retina XDR • Ceramic Shield • 5G • MagSafe",
+            storage: "128GB",
+            colors: ["Black", "White", "Green", "Blue", "Purple", "Red"],
+            price: "₦480,000",
+            badge: "badge-refurbished",
+            category: ["12", "preowned"]
+        },
+        {
+            id: 16,
+            name: "iPhone 12 mini",
+            series: "12 mini",
+            year: 2020,
+            specs: "A14 Bionic • 5.4\" Super Retina XDR • Smallest iPhone • 5G capable",
+            storage: "64GB",
+            colors: ["Black", "White", "Green", "Blue", "Purple", "Red"],
+            price: "₦430,000",
+            badge: "badge-refurbished",
+            category: ["12", "preowned"]
+        },
+
+        // iPhone SE Series
+        {
+            id: 17,
+            name: "iPhone SE (3rd Gen)",
+            series: "SE 2022",
+            year: 2022,
+            specs: "A15 Bionic • 4.7\" Retina HD • Touch ID • Single camera • 5G",
+            storage: "128GB",
+            colors: ["Midnight", "Starlight", "Red"],
+            price: "₦380,000",
+            badge: "badge-preowned",
+            category: ["se", "preowned"]
+        },
+        {
+            id: 18,
+            name: "iPhone SE (2nd Gen)",
+            series: "SE 2020",
+            year: 2020,
+            specs: "A13 Bionic • 4.7\" Retina HD • Home button • Affordable iPhone",
+            storage: "64GB",
+            colors: ["Black", "White", "Red"],
+            price: "₦280,000",
+            badge: "badge-refurbished",
+            category: ["se", "preowned"]
+        },
+
+        // Upcoming Models
+        {
+            id: 19,
+            name: "iPhone 16 Pro (Pre-Order)",
+            series: "16 Pro",
+            year: 2024,
+            specs: "A18 Pro chip • 6.3\" Display • Enhanced thermal design • Advanced AI",
+            storage: "256GB",
+            colors: ["Space Black", "Silver", "Gold", "New Color"],
+            price: "₦1,350,000",
+            badge: "badge-new",
+            category: ["new", "pro"]
+        },
+        {
+            id: 20,
+            name: "iPhone 16 Pro Max (Pre-Order)",
+            series: "16 Pro Max",
+            year: 2024,
+            specs: "A18 Pro chip • 6.9\" Display • Periscope zoom • Larger battery",
+            storage: "512GB",
+            colors: ["Space Black", "Silver", "Gold", "Titanium Gray"],
+            price: "₦1,550,000",
+            badge: "badge-new",
+            category: ["new", "pro", "max"]
+        },
+        {
+            id: 21,
+            name: "iPhone 11 Pro Max",
+            series: "11 Pro Max",
+            year: 2019,
+            specs: "A13 Bionic • 6.5\" Super Retina XDR • Triple-camera • Night mode",
+            storage: "256GB",
+            colors: ["Midnight Green", "Space Gray", "Silver", "Gold"],
+            price: "₦520,000",
+            badge: "badge-refurbished",
+            category: ["preowned"]
+        },
+        {
+            id: 22,
+            name: "iPhone 11 Pro",
+            series: "11 Pro",
+            year: 2019,
+            specs: "A13 Bionic • 5.8\" Super Retina XDR • Ultra Wide camera • Fast charging",
+            storage: "64GB",
+            colors: ["Midnight Green", "Space Gray", "Silver", "Gold"],
+            price: "₦450,000",
+            badge: "badge-refurbished",
+            category: ["preowned"]
+        },
+        {
+            id: 23,
+            name: "iPhone 11",
+            series: "11",
+            year: 2019,
+            specs: "A13 Bionic • 6.1\" Liquid Retina HD • Dual-camera • All-day battery",
+            storage: "128GB",
+            colors: ["Black", "Green", "Yellow", "Purple", "Red", "White"],
+            price: "₦380,000",
+            badge: "badge-refurbished",
+            category: ["preowned"]
+        },
+        {
+            id: 24,
+            name: "iPhone XS Max",
+            series: "XS Max",
+            year: 2018,
+            specs: "A12 Bionic • 6.5\" Super Retina HD • Dual-camera • Face ID",
+            storage: "256GB",
+            colors: ["Space Gray", "Silver", "Gold"],
+            price: "₦350,000",
+            badge: "badge-refurbished",
+            category: ["preowned"]
+        },
+        {
+            id: 25,
+            name: "iPhone XS",
+            series: "XS",
+            year: 2018,
+            specs: "A12 Bionic • 5.8\" Super Retina HD • OLED display • Water resistant",
+            storage: "64GB",
+            colors: ["Space Gray", "Silver", "Gold"],
+            price: "₦320,000",
+            badge: "badge-refurbished",
+            category: ["preowned"]
+        },
+        {
+            id: 26,
+            name: "iPhone XR",
+            series: "XR",
+            year: 2018,
+            specs: "A12 Bionic • 6.1\" Liquid Retina • Single camera • Six colors",
+            storage: "128GB",
+            colors: ["Black", "White", "Blue", "Yellow", "Coral", "Red"],
+            price: "₦280,000",
+            badge: "badge-refurbished",
+            category: ["preowned"]
+        },
+        {
+            id: 27,
+            name: "iPhone X",
+            series: "X",
+            year: 2017,
+            specs: "A11 Bionic • 5.8\" Super Retina HD • First Face ID • OLED",
+            storage: "256GB",
+            colors: ["Space Gray", "Silver"],
+            price: "₦300,000",
+            badge: "badge-refurbished",
+            category: ["preowned"]
+        },
+        {
+            id: 28,
+            name: "iPhone 8 Plus",
+            series: "8 Plus",
+            year: 2017,
+            specs: "A11 Bionic • 5.5\" Retina HD • Touch ID • Wireless charging",
+            storage: "64GB",
+            colors: ["Space Gray", "Silver", "Gold", "Red"],
+            price: "₦220,000",
+            badge: "badge-refurbished",
+            category: ["preowned"]
+        },
+        {
+            id: 29,
+            name: "iPhone 8",
+            series: "8",
+            year: 2017,
+            specs: "A11 Bionic • 4.7\" Retina HD • Glass back • AR capable",
+            storage: "64GB",
+            colors: ["Space Gray", "Silver", "Gold", "Red"],
+            price: "₦200,000",
+            badge: "badge-refurbished",
+            category: ["preowned"]
+        },
+        {
+            id: 30,
+            name: "iPhone 7 Plus",
+            series: "7 Plus",
+            year: 2016,
+            specs: "A10 Fusion • 5.5\" Retina HD • Dual-camera • Water resistant",
+            storage: "128GB",
+            colors: ["Black", "Jet Black", "Silver", "Gold", "Rose Gold", "Red"],
+            price: "₦180,000",
+            badge: "badge-refurbished",
+            category: ["preowned", "budget"]
+        },
+        {
+            id: 31,
+            name: "iPhone 7",
+            series: "7",
+            year: 2016,
+            specs: "A10 Fusion • 4.7\" Retina HD • Stereo speakers • No headphone jack",
+            storage: "32GB",
+            colors: ["Black", "Jet Black", "Silver", "Gold", "Rose Gold", "Red"],
+            price: "₦150,000",
+            badge: "badge-refurbished",
+            category: ["preowned", "budget"]
+        },
+        {
+            id: 32,
+            name: "iPhone 6S Plus",
+            series: "6S Plus",
+            year: 2015,
+            specs: "A9 chip • 5.5\" Retina HD • 3D Touch • Live Photos",
+            storage: "64GB",
+            colors: ["Space Gray", "Silver", "Gold", "Rose Gold"],
+            price: "₦120,000",
+            badge: "badge-refurbished",
+            category: ["preowned", "budget"]
+        },
+        {
+            id: 33,
+            name: "iPhone 6S",
+            series: "6S",
+            year: 2015,
+            specs: "A9 chip • 4.7\" Retina HD • 12MP camera • First Rose Gold",
+            storage: "32GB",
+            colors: ["Space Gray", "Silver", "Gold", "Rose Gold"],
+            price: "₦100,000",
+            badge: "badge-refurbished",
+            category: ["preowned", "budget"]
+        },
+        {
+            id: 34,
+            name: "iPhone 14 (New Sealed)",
+            series: "14",
+            year: 2022,
+            specs: "A15 Bionic • 6.1\" Super Retina XDR • Brand new sealed • 1 year warranty",
+            storage: "256GB",
+            colors: ["Midnight", "Starlight", "Blue", "Purple"],
+            price: "₦720,000",
+            badge: "badge-new",
+            category: ["14", "new"]
+        },
+        {
+            id: 35,
+            name: "iPhone 13 Pro (Limited Stock)",
+            series: "13 Pro",
+            year: 2021,
+            specs: "A15 Bionic • 6.1\" ProMotion • Sierra Blue • Final units available",
+            storage: "512GB",
+            colors: ["Sierra Blue", "Graphite", "Gold"],
+            price: "₦750,000",
+            badge: "badge-limited",
+            category: ["13", "pro", "preowned"]
+        },
+        {
+            id: 36,
+            name: "iPhone 15 Pro (1TB Special)",
+            series: "15 Pro",
+            year: 2023,
+            specs: "A17 Pro chip • 6.1\" Titanium • 1TB Storage • For power users",
+            storage: "1TB",
+            colors: ["Natural Titanium", "Black Titanium"],
+            price: "₦1,450,000",
+            badge: "badge-new",
+            category: ["15", "pro", "new"]
+        },
+        {
+            id: 37,
+            name: "iPhone 14 Pro Max (512GB)",
+            series: "14 Pro Max",
+            year: 2022,
+            specs: "A16 Bionic • 6.7\" Always-On • 512GB Storage • Deep Purple",
+            storage: "512GB",
+            colors: ["Deep Purple", "Gold", "Silver"],
+            price: "₦1,050,000",
+            badge: "badge-preowned",
+            category: ["14", "pro", "max", "preowned"]
+        },
+        {
+            id: 38,
+            name: "iPhone 12 Pro (Pacific Blue)",
+            series: "12 Pro",
+            year: 2020,
+            specs: "A14 Bionic • 6.1\" Super Retina XDR • Pacific Blue color • LiDAR",
+            storage: "256GB",
+            colors: ["Pacific Blue", "Graphite"],
+            price: "₦550,000",
+            badge: "badge-refurbished",
+            category: ["12", "pro", "preowned"]
+        },
+        {
+            id: 39,
+            name: "iPhone SE (3rd Gen) 256GB",
+            series: "SE 2022",
+            year: 2022,
+            specs: "A15 Bionic • 4.7\" Retina HD • 256GB Storage • 5G • Touch ID",
+            storage: "256GB",
+            colors: ["Midnight", "Starlight", "Red"],
+            price: "₦420,000",
+            badge: "badge-preowned",
+            category: ["se", "preowned"]
+        },
+        {
+            id: 40,
+            name: "iPhone 15 Plus (256GB)",
+            series: "15 Plus",
+            year: 2023,
+            specs: "A16 Bionic • 6.7\" Dynamic Island • 256GB Storage • USB-C",
+            storage: "256GB",
+            colors: ["Black", "Blue", "Pink", "Yellow"],
+            price: "₦920,000",
+            badge: "badge-new",
+            category: ["15", "max", "new"]
+        },
+        {
+            id: 40,
+            name: "Samsung Galaxy S24 Ultra",
+            series: "S24 Ultra",
+            year: 2024,
+            specs: "Snapdragon 8 Gen 3 • 6.8\" Dynamic AMOLED 2X • 200MP Camera • S Pen",
+            storage: "256GB",
+            colors: ["Titanium Gray", "Titanium Black", "Titanium Violet", "Titanium Yellow"],
+            price: "₦1,250,000",
+            badge: "badge-new",
+            category: ["samsung", "flagship", "ultra"]
+        },
+        {
+            id: 41,
+            name: "Samsung Galaxy S24+",
+            series: "S24+",
+            year: 2024,
+            specs: "Exynos 2400 • 6.7\" QHD+ 120Hz • 50MP Camera • Galaxy AI",
+            storage: "256GB",
+            colors: ["Onyx Black", "Marble Gray", "Cobalt Violet", "Amber Yellow"],
+            price: "₦950,000",
+            badge: "badge-new",
+            category: ["samsung", "flagship", "plus"]
+        },
+        {
+            id: 42,
+            name: "Samsung Galaxy S24",
+            series: "S24",
+            year: 2024,
+            specs: "Exynos 2400 • 6.2\" FHD+ 120Hz • Compact Flagship • 7 years updates",
+            storage: "128GB",
+            colors: ["Onyx Black", "Marble Gray", "Cobalt Violet", "Amber Yellow"],
+            price: "₦850,000",
+            badge: "badge-new",
+            category: ["samsung", "flagship"]
+        },
+        {
+            id: 43,
+            name: "Samsung Galaxy S23 Ultra",
+            series: "S23 Ultra",
+            year: 2023,
+            specs: "Snapdragon 8 Gen 2 • 6.8\" QHD+ 120Hz • 200MP Main Camera • S Pen",
+            storage: "256GB",
+            colors: ["Phantom Black", "Cream", "Green", "Lavender"],
+            price: "₦1,100,000",
+            badge: "badge-preowned",
+            category: ["samsung", "flagship", "ultra"]
+        },
+        {
+            id: 44,
+            name: "Samsung Galaxy S23+",
+            series: "S23+",
+            year: 2023,
+            specs: "Snapdragon 8 Gen 2 • 6.6\" FHD+ 120Hz • 50MP Camera • 4700mAh",
+            storage: "256GB",
+            colors: ["Phantom Black", "Cream", "Green", "Lavender"],
+            price: "₦850,000",
+            badge: "badge-preowned",
+            category: ["samsung", "flagship", "plus"]
+        },
+        {
+            id: 45,
+            name: "Samsung Galaxy S23",
+            series: "S23",
+            year: 2023,
+            specs: "Snapdragon 8 Gen 2 • 6.1\" FHD+ 120Hz • Compact Design • 3900mAh",
+            storage: "128GB",
+            colors: ["Phantom Black", "Cream", "Green", "Lavender"],
+            price: "₦750,000",
+            badge: "badge-preowned",
+            category: ["samsung", "flagship"]
+        },
+        {
+            id: 46,
+            name: "Samsung Galaxy Z Fold5",
+            series: "Z Fold5",
+            year: 2023,
+            specs: "Snapdragon 8 Gen 2 • 7.6\" Foldable • 6.2\" Cover Display • Multi-Tasking",
+            storage: "512GB",
+            colors: ["Icy Blue", "Phantom Black", "Cream"],
+            price: "₦1,450,000",
+            badge: "badge-foldable",
+            category: ["samsung", "foldable", "flagship"]
+        },
+        {
+            id: 47,
+            name: "Samsung Galaxy Z Flip5",
+            series: "Z Flip5",
+            year: 2023,
+            specs: "Snapdragon 8 Gen 2 • 6.7\" Foldable • 3.4\" Flex Window • Compact",
+            storage: "256GB",
+            colors: ["Mint", "Graphite", "Cream", "Lavender"],
+            price: "₦950,000",
+            badge: "badge-foldable",
+            category: ["samsung", "foldable"]
+        },
+        {
+            id: 48,
+            name: "Samsung Galaxy Z Fold4",
+            series: "Z Fold4",
+            year: 2022,
+            specs: "Snapdragon 8+ Gen 1 • 7.6\" Main Display • Under Display Camera",
+            storage: "256GB",
+            colors: ["Graygreen", "Phantom Black", "Beige"],
+            price: "₦1,200,000",
+            badge: "badge-preowned",
+            category: ["samsung", "foldable", "flagship"]
+        },
+        {
+            id: 49,
+            name: "Samsung Galaxy Z Flip4",
+            series: "Z Flip4",
+            year: 2022,
+            specs: "Snapdragon 8+ Gen 1 • 6.7\" AMOLED • FlexCam • IPX8 Water Resistant",
+            storage: "128GB",
+            colors: ["Bora Purple", "Graphite", "Pink Gold", "Blue"],
+            price: "₦800,000",
+            badge: "badge-preowned",
+            category: ["samsung", "foldable"]
+        },
+        {
+            id: 50,
+            name: "Samsung Galaxy A54 5G",
+            series: "A54 5G",
+            year: 2023,
+            specs: "Exynos 1380 • 6.4\" 120Hz AMOLED • 50MP Camera • IP67 Water Resistant",
+            storage: "128GB",
+            colors: ["Awesome Black", "Awesome White", "Awesome Violet", "Awesome Lime"],
+            price: "₦350,000",
+            badge: "badge-budget",
+            category: ["samsung", "midrange", "budget"]
+        },
+        {
+            id: 51,
+            name: "Samsung Galaxy A34 5G",
+            series: "A34 5G",
+            year: 2023,
+            specs: "MediaTek Dimensity 1080 • 6.6\" 120Hz AMOLED • 48MP Camera • 5000mAh",
+            storage: "128GB",
+            colors: ["Awesome Black", "Awesome Silver", "Awesome Violet"],
+            price: "₦280,000",
+            badge: "badge-budget",
+            category: ["samsung", "midrange", "budget"]
+        },
+        {
+            id: 52,
+            name: "Samsung Galaxy A14 5G",
+            series: "A14 5G",
+            year: 2023,
+            specs: "MediaTek Dimensity 700 • 6.6\" 90Hz Display • 50MP Camera • 5000mAh",
+            storage: "64GB",
+            colors: ["Black", "Silver", "Dark Red"],
+            price: "₦180,000",
+            badge: "badge-budget",
+            category: ["samsung", "budget"]
+        },
+        {
+            id: 53,
+            name: "Samsung Galaxy A73 5G",
+            series: "A73 5G",
+            year: 2022,
+            specs: "Snapdragon 778G • 6.7\" 120Hz AMOLED • 108MP Camera • IP67 Rating",
+            storage: "128GB",
+            colors: ["Gray", "White", "Mint"],
+            price: "₦420,000",
+            badge: "badge-preowned",
+            category: ["samsung", "midrange"]
+        },
+        {
+            id: 54,
+            name: "Samsung Galaxy S22 Ultra",
+            series: "S22 Ultra",
+            year: 2022,
+            specs: "Snapdragon 8 Gen 1 • 6.8\" QHD+ 120Hz • Built-in S Pen • 108MP Camera",
+            storage: "256GB",
+            colors: ["Phantom Black", "White", "Burgundy", "Green"],
+            price: "₦950,000",
+            badge: "badge-preowned",
+            category: ["samsung", "flagship", "ultra"]
+        },
+        {
+            id: 55,
+            name: "Samsung Galaxy S22+",
+            series: "S22+",
+            year: 2022,
+            specs: "Snapdragon 8 Gen 1 • 6.6\" FHD+ 120Hz • 50MP Camera • 4500mAh",
+            storage: "128GB",
+            colors: ["Phantom Black", "White", "Pink Gold", "Green"],
+            price: "₦700,000",
+            badge: "badge-preowned",
+            category: ["samsung", "flagship", "plus"]
+        },
+        {
+            id: 56,
+            name: "Samsung Galaxy S22",
+            series: "S22",
+            year: 2022,
+            specs: "Snapdragon 8 Gen 1 • 6.1\" FHD+ 120Hz • Compact Flagship • 3700mAh",
+            storage: "128GB",
+            colors: ["Phantom Black", "White", "Pink Gold", "Green"],
+            price: "₦620,000",
+            badge: "badge-preowned",
+            category: ["samsung", "flagship"]
+        },
+        {
+            id: 57,
+            name: "Samsung Galaxy S21 FE 5G",
+            series: "S21 FE",
+            year: 2022,
+            specs: "Snapdragon 888 • 6.4\" 120Hz AMOLED • Fan Edition • 4500mAh",
+            storage: "128GB",
+            colors: ["Graphite", "Olive", "Lavender", "White"],
+            price: "₦550,000",
+            badge: "badge-preowned",
+            category: ["samsung", "flagship"]
+        },
+        {
+            id: 58,
+            name: "Samsung Galaxy Note20 Ultra 5G",
+            series: "Note20 Ultra",
+            year: 2020,
+            specs: "Snapdragon 865+ • 6.9\" 120Hz AMOLED • S Pen • 108MP Camera",
+            storage: "256GB",
+            colors: ["Mystic Black", "Mystic Bronze", "Mystic White"],
+            price: "₦650,000",
+            badge: "badge-refurbished",
+            category: ["samsung", "note", "flagship"]
+        },
+        {
+            id: 59,
+            name: "Samsung Galaxy Z Fold3 5G",
+            series: "Z Fold3",
+            year: 2021,
+            specs: "Snapdragon 888 • 7.6\" Foldable • Under Display Camera • S Pen Support",
+            storage: "256GB",
+            colors: ["Phantom Black", "Phantom Green", "Phantom Silver"],
+            price: "₦1,100,000",
+            badge: "badge-preowned",
+            category: ["samsung", "foldable", "flagship"]
+        },
+        {
+            id: 60,
+            name: "Samsung Galaxy Z Flip3 5G",
+            series: "Z Flip3",
+            year: 2021,
+            specs: "Snapdragon 888 • 6.7\" Foldable • 1.9\" Cover Screen • IPX8 Waterproof",
+            storage: "128GB",
+            colors: ["Cream", "Green", "Lavender", "Phantom Black"],
+            price: "₦750,000",
+            badge: "badge-preowned",
+            category: ["samsung", "foldable"]
+        }
+
+    ];
+
+    // Function to create WhatsApp message
+    function createWhatsAppMessage(iphone) {
+        return `Hello Mindway Tech! I'm interested in purchasing:\n\n*${iphone.name} (${iphone.year})*\nSeries: iPhone ${iphone.series}\nSpecs: ${iphone.specs}\nStorage: ${iphone.storage}\nPrice: ${iphone.price}\n\nPlease provide availability, color options, and payment details.`;
+    }
+
+    // Function to get color class
+    function getColorClass(color) {
+        const colorMap = {
+            'Natural Titanium': '#8a8a8a',
+            'Blue Titanium': '#5e7ce2',
+            'White Titanium': '#f5f5f7',
+            'Black Titanium': '#1d1d1f',
+            'Space Black': '#1d1d1f',
+            'Deep Purple': '#5856d6',
+            'Gold': '#ffd700',
+            'Silver': '#f5f5f7',
+            'Midnight': '#1d1d1f',
+            'Starlight': '#f5f5f7',
+            'Blue': '#007aff',
+            'Green': '#34c759',
+            'Pink': '#ff2d55',
+            'Yellow': '#ffcc00',
+            'Purple': '#af52de',
+            'Red': '#ff3b30',
+            'Graphite': '#5c5c5c',
+            'Sierra Blue': '#69a9d6',
+            'Pacific Blue': '#007aff',
+            'Black': '#1d1d1f',
+            'White': '#f5f5f7'
+        };
+        return colorMap[color] || '#8a8a8a';
+    }
+
+    // Function to render iPhones
+    function renderiPhones(filter = 'all') {
+        const grid = document.getElementById('iphoneGrid');
+        grid.innerHTML = '';
+        
+        const filterediPhones = filter === 'all' 
+            ? iphones 
+            : iphones.filter(iphone => 
+                iphone.category.includes(filter)
+            );
+        
+        filterediPhones.forEach(iphone => {
+            const card = document.createElement('div');
+            card.className = 'iphone-card';
+            
+            const badgeClass = iphone.badge ? `iphone-badge ${iphone.badge}` : 'iphone-badge';
+            const badgeText = iphone.badge === 'badge-new' ? 'New Arrival' :
+                             iphone.badge === 'badge-preowned' ? 'Certified Pre-owned' :
+                             iphone.badge === 'badge-refurbished' ? 'Refurbished' :
+                             iphone.badge === 'badge-limited' ? 'Limited Stock' : '';
+            
+            const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(createWhatsAppMessage(iphone))}`;
+            
+            // Get first color for display
+            const firstColor = iphone.colors[0];
+            
+            card.innerHTML = `
+                ${badgeText ? `<span class="${badgeClass}">${badgeText}</span>` : ''}
+                <span class="iphone-year">${iphone.year}</span>
+                <div class="iphone-series">iPhone ${iphone.series}</div>
+                <h3>${iphone.name}</h3>
+                <div class="iphone-color">
+                    <div class="color-dot" style="background-color: ${getColorClass(firstColor)}"></div>
+                    <div class="color-name">${firstColor} • ${iphone.storage}</div>
+                </div>
+                <p class="specs">${iphone.specs}</p>
+                
+                <div class="storage-options">
+                    ${iphone.storage === '64GB' ? '<div class="storage-badge active">64GB</div>' : ''}
+                    ${iphone.storage === '128GB' ? '<div class="storage-badge active">128GB</div>' : ''}
+                    ${iphone.storage === '256GB' ? '<div class="storage-badge active">256GB</div>' : ''}
+                    ${iphone.storage === '512GB' ? '<div class="storage-badge active">512GB</div>' : ''}
+                </div>
+                
+                <div class="price-container">
+                    <span class="price-tag">${iphone.price}</span>
+                    <div class="price-note">Available colors: ${iphone.colors.join(', ')}</div>
+                </div>
+                
+                <a href="${whatsappLink}" class="buy-btn" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Order via WhatsApp
+                </a>
+            `;
+            
+            grid.appendChild(card);
+        });
+        
+        // Update active filter buttons
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if (filter === 'all' && btn.textContent.toLowerCase().includes('all iphones')) {
+                btn.classList.add('active');
+            } else if (btn.textContent.toLowerCase().includes(filter)) {
+                btn.classList.add('active');
+            }
+        });
+        
+        // Update active series badges
+        document.querySelectorAll('.series-badge').forEach(badge => {
+            badge.classList.remove('active');
+            if (filter === 'all' && badge.textContent.toLowerCase().includes('all series')) {
+                badge.classList.add('active');
+            } else if (badge.textContent.toLowerCase().includes(filter)) {
+                badge.classList.add('active');
+            }
+        });
+    }
+
+    // Filter function
+    function filteriPhones(category) {
+        renderiPhones(category);
+    }
+
+    // Initial render
+    document.addEventListener('DOMContentLoaded', () => {
+        renderiPhones('all');
+        
+        // Add click handlers to filter buttons
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const filter = this.getAttribute('onclick').match(/filteriPhones\('(.+)'\)/)[1];
+                filteriPhones(filter);
+            });
+        });
+        
+        // Add click handlers to series badges
+        document.querySelectorAll('.series-badge').forEach(badge => {
+            badge.addEventListener('click', function() {
+                const filter = this.getAttribute('onclick').match(/filteriPhones\('(.+)'\)/)[1];
+                filteriPhones(filter);
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
