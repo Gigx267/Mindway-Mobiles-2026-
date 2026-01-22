@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Mindway Tech - Abuja's Premier Tech Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --accent: #00f2ff;
+            --accent-silver: #a1a1a6;
+            --tech-black: #050505;
+            --clinical-white: #ffffff;
+            --border-light: rgba(255, 255, 255, 0.1);
+            --glass: rgba(10, 10, 10, 0.9);
+            --input-bg: rgba(255, 255, 255, 0.03);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: var(--tech-black); 
+            color: white;
+            overflow-x: hidden; 
+        }
+
+        /* --- Navigation --- */
+        header {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            padding: 1rem 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            position: sticky; top: 0; z-index: 1000;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .logo-box .logo { 
+            font-weight: 900; 
+            letter-spacing: 5px; 
+            font-size: 1.2rem; 
+            text-decoration: none; 
+            color: white; 
+            display: block; 
+        }
+        .status-tag { 
+            font-size: 9px; 
+            letter-spacing: 2px; 
+            color: var(--accent); 
+            text-transform: uppercase; 
+        }
+
+        .nav-links { 
+            display: flex; 
+            list-style: none; 
+            gap: 2.5rem; 
+            align-items: center; 
+        }
+        .nav-item { 
+            text-decoration: none; 
+            color: var(--accent-silver); 
+            font-size: 11px; 
+            letter-spacing: 2px; 
+            transition: 0.3s; 
+            text-transform: uppercase;
+        }
+        .nav-item:hover { color: var(--accent); }
+
+        /* --- Contact Hero --- */
+        .contact-hero {
+            padding: 100px 5% 60px;
+            text-align: center;
+            background: radial-gradient(circle at 50% 0%, rgba(0, 242, 255, 0.1) 0%, transparent 70%);
+        }
+        .contact-hero h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+        }
+        .contact-hero p {
+            color: var(--accent-silver);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* --- Contact Main Section --- */
+        .contact-wrapper {
+            max-width: 1200px;
+            margin: 0 auto 100px;
+            padding: 0 5%;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 50px;
+        }
+
+        /* Left Side: Info */
+        .info-card {
+            background: var(--input-bg);
+            border: 1px solid var(--border-light);
+            padding: 40px;
+            border-radius: 30px;
+            height: fit-content;
+        }
+        .info-group {
+            margin-bottom: 35px;
+        }
+        .info-group:last-child { margin-bottom: 0; }
+        .info-label {
+            color: var(--accent);
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: block;
+        }
+        .info-detail {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: white;
+            text-decoration: none;
+            display: block;
+        }
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-silver);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .social-icon:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        /* Right Side: Form */
+        .contact-form-container {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-light);
+            padding: 50px;
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 25px;
+        }
+        .full-width { grid-column: span 2; }
+        
+        label {
+            display: block;
+            font-size: 12px;
+            color: var(--accent-silver);
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+        input, textarea, select {
+            width: 100%;
+            background: var(--input-bg);
+            border: 1px solid var(--border-light);
+            padding: 15px;
+            border-radius: 8px;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            transition: 0.3s;
+        }
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: rgba(255,255,255,0.05);
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: var(--accent);
+            color: #000;
+            border: none;
+            border-radius: 8px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .submit-btn:hover {
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.4);
+            transform: scale(1.01);
+        }
+
+        /* --- Map Section --- */
+        .map-section {
+            padding: 0 5% 100px;
+        }
+        .map-frame {
+            width: 100%;
+            height: 450px;
+            border-radius: 30px;
+            border: 1px solid var(--border-light);
+            overflow: hidden;
+            filter: grayscale(1) invert(0.9) contrast(1.2); /* Tech look for map */
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: #080808;
+            padding: 60px 5% 40px;
+            text-align: center;
+            border-top: 1px solid var(--border-light);
+        }
+        .footer-logo {
+            font-weight: 900; letter-spacing: 5px; font-size: 1.5rem; margin-bottom: 20px;
+        }
+
+        /* --- Floating WA --- */
+        .wa-float {
+            position: fixed; bottom: 30px; right: 30px;
+            background: #25d366; color: white; width: 60px; height: 60px;
+            border-radius: 50px; display: flex; align-items: center; justify-content: center;
+            font-size: 30px; z-index: 1001; text-decoration: none;
+        }
+
+        @media (max-width: 968px) {
+            .contact-wrapper { grid-template-columns: 1fr; }
+            .contact-hero h1 { font-size: 2.5rem; }
+            .form-grid { grid-template-columns: 1fr; }
+            .full-width { grid-column: span 1; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo-box">
+        <a href="index.html" class="logo">MINDWAY</a>
+        <div class="status-tag">Abuja's Premier Tech Hub</div>
+    </div>
+    <nav>
+        <ul class="nav-links">
+            <li><a href="index.html" class="nav-item">Home</a></li>
+            <li><a href="laptop.html" class="nav-item">Laptops</a></li>
+            <li><a href="Phone.html" class="nav-item">Phones</a></li>
+            <li><a href="paysmall.html" class="nav-item">Pay Small Small</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="contact-hero">
+    <h1>Get In Touch</h1>
+    <p>Have a technical issue or looking for your next upgrade? Our team of experts is ready to assist you. Reach out through any channel below.</p>
+</section>
+
+<main class="contact-wrapper">
+    <aside class="info-card">
+        <div class="info-group">
+            <span class="info-label">Visit Our Store</span>
+            <div class="info-detail">
+                Basement Shop No.5 Buchanan Mall<br>
+                Aminu Kano Crescent, Wuse 2, Abuja
+            </div>
+        </div>
+
+        <div class="info-group">
+            <span class="info-label">Speak With Us</span>
+            <a href="tel:+2348104564543" class="info-detail">0810 456 4543</a>
+            <a href="tel:+2347038557377" class="info-detail">0703 855 7377</a>
+        </div>
+
+        <div class="info-group">
+            <span class="info-label">Email Address</span>
+            <a href="mailto:mindwaymobilesltd@gmail.com" class="info-detail">mindwaymobilesltd@gmail.com</a>
+        </div>
+
+        <div class="info-group">
+            <span class="info-label">Working Hours</span>
+            <div class="info-detail">Mon - Sat: 9:00 AM - 7:00 PM</div>
+            <div class="info-detail">Sunday: 12:00 PM - 5:00 PM</div>
+        </div>
+
+        <div class="info-group">
+            <span class="info-label">Follow Us</span>
+            <div class="social-links">
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+    </aside>
+
+    <section class="contact-form-container">
+        <form id="contactForm">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" placeholder="John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" placeholder="+234..." required>
+                </div>
+                <div class="form-group full-width">
+                    <label>Inquiry Type</label>
+                    <select required>
+                        <option value="">Select a service...</option>
+                        <option value="buy">Buying a Device</option>
+                        <option value="repair">Repair Service</option>
+                        <option value="trade">Trade-In Inquiry</option>
+                        <option value="pay-small">Pay Small Small (Installments)</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group full-width">
+                    <label>Your Message</label>
+                    <textarea rows="5" placeholder="How can we help you today?" required></textarea>
+                </div>
+            </div>
+            <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+    </section>
+</main>
+
+<section class="map-section">
+    <div class="map-frame">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3939.837777170889!2d7.4725345!3d9.0785162!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104e0af455648877%3A0xc6657c79f906d4e5!2sAminu%20Kano%20Cres%2C%20Wuse%202%2C%20Abuja!5e0!3m2!1sen!2sng!4v1700000000000" 
+            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+        </iframe>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-logo">MINDWAY Mobiles </div>
+    <p style="color: var(--accent-silver); font-size: 12px;">© 2024 Mindway Mobiles Ltd. All Rights Reserved.</p>
+</footer>
+
+<a href="https://wa.me/2349061407613" class="wa-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Thank you for contacting Mindway Tech! Our team will respond shortly.');
+        this.reset();
+    });
+</script>
+
+</body>
+</html>
