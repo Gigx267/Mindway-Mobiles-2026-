@@ -145,22 +145,186 @@
 </head>
 <body>
 
-<header>
-    <div class="logo-box">
-        <div class="logo">MINDWAY</div>
-        <div class="status-tag"> Abuja Dealer For Laptops & Phones </div>
-    </div>
+<header class="main-header">
+    <div class="header-inner">
+        <div class="logo-container">
+            <div class="logo-wrapper">
+                <img class="logo-img" src="lyt.jpeg" alt="MINDWAY Logo">
+                <div class="logo-glow"></div>
+            </div>
+            <div class="brand-text">
+                <span class="brand-name">Mindway Mobiles</span>
+                <span class="brand-sub"></span>
+            </div>
+        </div>
 
-    <nav>
-        <ul class="nav-links">
-                <li><a href="about.html" class="nav-item">About us </a></li>
-            <li><a href="laptop.html" class="nav-item">Laptops</a></li>
-            <li><a href="Phone.html" class="nav-item">Phones</a></li>
-            <li><a href="paysmall.html" class="nav-item">Pay Small Small </a></li>
-            <li><a href="Contact.html" class="nav-item btn-connect">Contact us </a></li>
-        </ul>
-    </nav>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle">
+        <label for="nav-toggle" class="nav-toggle-label">
+            <span></span>
+        </label>
+
+        <nav class="navbar">
+            <ul class="nav-links">
+                <li><a href="about.html" class="nav-item">About Us</a></li>
+                <li><a href="laptop.html" class="nav-item">Laptops</a></li>
+                <li><a href="Phone.html" class="nav-item">Phones</a></li>
+                <li><a href="paysmall.html" class="nav-item">Pay Small Small</a></li>
+                <li><a href="#" class="nav-item btn-connect">Connect</a></li>
+            </ul>
+        </nav>
+    </div>
 </header>
+
+<style>
+    :root {
+        --neon-cyan: #00f3ff;
+        --neon-magenta: #737373;
+        --bg-dark: #050505;
+        --text-main: #e2e8f0;
+    }
+
+    /* Core Layout */
+    .main-header {
+        background: rgba(5, 5, 5, 0.95);
+        backdrop-filter: blur(15px);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        padding: 0 5%;
+        border-bottom: 2px solid #1a1a1a;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .header-inner {
+        max-width: 1400px;
+        height: 80px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+    }
+
+    /* Logo & Branding */
+    .logo-container { display: flex; align-items: center; gap: 12px; }
+    .logo-img {
+        height: 50px; width: 60px;
+        border: 1px solid var(--neon-cyan);
+        filter: drop-shadow(0 0 5px var(--neon-cyan));
+    }
+    .brand-name {
+        font-size: 1.4rem; font-weight: 900; color: #fff;
+        text-transform: uppercase; letter-spacing: 2px;
+        text-shadow: 2px 0 var(--neon-magenta), -1px 0 var(--neon-cyan);
+    }
+    .brand-sub {
+        font-size: 0.65rem; color: var(--neon-cyan);
+        text-transform: uppercase; letter-spacing: 0.3em;
+    }
+
+    /* Desktop Navigation */
+    .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .nav-item {
+        text-decoration: none;
+        color: var(--text-main);
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        padding: 8px 15px;
+        transition: all 0.3s;
+        border: 1px solid transparent;
+    }
+
+    .nav-item:hover {
+        color: var(--neon-cyan);
+        border: 1px solid var(--neon-cyan);
+        box-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+    }
+
+    .btn-connect {
+        border: 1px solid var(--neon-magenta) !important;
+        color: var(--neon-magenta) !important;
+        clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
+    }
+
+    /* --- MOBILE RESPONSIVE LOGIC --- */
+
+    .nav-toggle { display: none; } /* Hide checkbox */
+
+    .nav-toggle-label {
+        display: none; /* Hidden on desktop */
+        cursor: pointer;
+        padding: 10px;
+    }
+
+    .nav-toggle-label span,
+    .nav-toggle-label span::before,
+    .nav-toggle-label span::after {
+        display: block;
+        background: var(--neon-cyan);
+        height: 2px;
+        width: 25px;
+        position: relative;
+        transition: all 0.3s;
+    }
+
+    .nav-toggle-label span::before { content: ''; top: 8px; }
+    .nav-toggle-label span::after { content: ''; bottom: 10px; }
+
+    @media (max-width: 950px) {
+        .nav-toggle-label { display: block; z-index: 1001; }
+
+        .navbar {
+            position: fixed;
+            top: 0; left: -100%; /* Hidden off-screen */
+            width: 80%;
+            height: 100vh;
+            background: rgba(5, 5, 5, 0.98);
+            border-right: 2px solid var(--neon-cyan);
+            transition: left 0.4s cubic-bezier(0.77,0,0.175,1);
+            padding-top: 100px;
+            box-shadow: 10px 0 30px rgba(0, 243, 255, 0.2);
+        }
+
+        /* Show menu when checkbox is checked */
+        .nav-toggle:checked ~ .navbar {
+            left: 0;
+        }
+
+        /* Animate Hamburger to X */
+        .nav-toggle:checked ~ .nav-toggle-label span { background: transparent; }
+        .nav-toggle:checked ~ .nav-toggle-label span::before { transform: rotate(45deg); top: 0; }
+        .nav-toggle:checked ~ .nav-toggle-label span::after { transform: rotate(-45deg); bottom: 2px; }
+
+        .nav-links {
+            flex-direction: column;
+            gap: 20px;
+            align-items: flex-start;
+            padding-left: 40px;
+        }
+
+        .nav-item {
+            font-size: 1.2rem;
+            width: 100%;
+        }
+
+        /* Scanline effect for mobile menu */
+        .navbar::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 243, 255, 0.05) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            background-size: 100% 4px, 3px 100%;
+            pointer-events: none;
+        }
+    }
+</style>
 <div class="hero-container">
     <section class="hero-grid">
         <div class="bento-item item-main">
@@ -227,6 +391,74 @@
     </div>
 </section>
 
+<section class="map-section">
+    <div class="map-frame">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3939.837777170889!2d7.4725345!3d9.0785162!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104e0af455648877%3A0xc6657c79f906d4e5!2sAminu%20Kano%20Cres%2C%20Wuse%202%2C%20Abuja!5e0!3m2!1sen!2sng!4v1700000000000" 
+            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+        </iframe>
+    </div>
+</section>
+<style> .map-section {
+    width: 100%;
+    max-width: 1200px; /* Adjust based on your layout */
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.map-frame {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    /* Sets a 16:9 aspect ratio */
+    aspect-ratio: 16 / 9; 
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    background: #100e0e; /* Placeholder color */
+}
+
+/* Fallback for older browsers that don't support aspect-ratio */
+@supports not (aspect-ratio: 16/9) {
+    .map-frame {
+        padding-top: 56.25%; 
+        height: 0;
+    }
+    .map-frame iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}
+
+.map-frame iframe {
+    width: 100%;
+    height: 100%;
+    filter: grayscale(10%) contrast(1.1); /* Optional: Slight stylistic touch */
+    transition: filter 0.3s ease;
+}
+
+/* Interaction: Map becomes clearer/brighter on hover */
+.map-frame:hover iframe {
+    filter: grayscale(0%) contrast(1);
+}  </style>
+
+<script> document.addEventListener("DOMContentLoaded", function() {
+    const mapFrame = document.querySelector('.map-frame');
+    const iframe = mapFrame.querySelector('iframe');
+
+    // Initially disable pointer events to allow page scrolling
+    iframe.style.pointerEvents = 'none';
+
+    // Enable pointer events when the user clicks the map area
+    mapFrame.addEventListener('click', function() {
+        iframe.style.pointerEvents = 'auto';
+    });
+
+    // Disable pointer events again when the mouse leaves the map
+    mapFrame.addEventListener('mouseleave', function() {
+        iframe.style.pointerEvents = 'none';
+    });
+}); </script>
 
 <section id="about" class="about-section">
     <div class="about-content">
@@ -401,5 +633,9 @@
     }
 }
 </style>
+<footer>
+    <div class="footer-logo">MINDWAY Mobiles </div>
+    <p style="color: var(--accent-silver); font-size: 12px;">© 2024 Mindway Mobiles Ltd. All Rights Reserved.</p>
+</footer>
 </body>
 </html>
