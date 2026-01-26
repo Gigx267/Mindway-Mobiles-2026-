@@ -1,27 +1,27 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pay Small Small - Easy Installments | Mindway Tech Abuja</title>
+    <title>MINDWAY | Next-Gen Gadgets Abuja</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --accent: #00c896;
+            --accent: #00f2ff;
             --accent-silver: #a1a1a6;
             --tech-black: #050505;
             --clinical-white: #ffffff;
             --border-light: rgba(255, 255, 255, 0.1);
-            --glass: rgba(10, 10, 10, 0.9);
-            --success: #10b981;
-            --warning: #f59e0b;
-            --danger: #ef4444;
+            --animation-timing: cubic-bezier(0.2, 1, 0.2, 1);
+            --glass: rgba(10, 10, 10, 0.8);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body { 
             font-family: 'Inter', sans-serif; 
             background: var(--tech-black); 
@@ -29,7 +29,7 @@
             overflow-x: hidden; 
         }
 
-        /* --- Global Nav --- */
+        /* --- Navigation --- */
         header {
             background: var(--glass);
             backdrop-filter: blur(15px);
@@ -38,440 +38,574 @@
             position: sticky; top: 0; z-index: 1000;
             border-bottom: 1px solid var(--border-light);
         }
-        .logo-box .logo { 
-            font-weight: 900; 
-            letter-spacing: 5px; 
-            font-size: 1.2rem; 
-            text-decoration: none; 
-            color: white; 
-            display: block; 
-        }
-        .nav-links { 
-            display: flex; 
-            list-style: none; 
-            gap: 2.5rem; 
-            align-items: center; 
-        }
+
+        .logo-box .logo { font-weight: 900; letter-spacing: 5px; font-size: 1.2rem; }
+        .status-tag { font-size: 9px; letter-spacing: 2px; color: var(--accent); text-transform: uppercase; }
+
+        .nav-links { display: flex; list-style: none; gap: 2.5rem; align-items: center; }
         .nav-item { 
-            text-decoration: none; 
-            color: var(--accent-silver); 
-            font-size: 11px; 
-            letter-spacing: 2px; 
-            text-transform: uppercase; 
-            transition: color 0.3s;
-        }
-        .nav-item:hover { color: var(--accent); }
-
-        /* --- Hero Section --- */
-        .hero {
-            padding: 100px 5% 60px;
-            text-align: center;
-            background: linear-gradient(135deg, #051b15 0%, #050505 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 30% 20%, rgba(0, 200, 150, 0.1) 0%, transparent 70%);
-            pointer-events: none;
-        }
-        .hero-subtitle {
-            color: var(--accent);
-            letter-spacing: 4px;
-            font-size: 12px;
-            font-weight: 700;
+            text-decoration: none; color: var(--accent-silver); 
+            font-size: 11px; letter-spacing: 2px; transition: 0.3s; 
             text-transform: uppercase;
-            margin-bottom: 15px;
         }
-        .hero h1 { 
-            font-size: 4rem; 
-            font-weight: 900; 
-            letter-spacing: -2px; 
-            margin-bottom: 20px;
-            line-height: 1.1;
-        }
-        .hero-description {
-            color: var(--accent-silver);
-            max-width: 700px;
-            margin: 25px auto 40px;
-            font-size: 16px;
-            line-height: 1.7;
-            font-weight: 300;
-        }
-        .hero-highlight {
-            color: var(--accent);
-            font-weight: 700;
-            font-size: 18px;
-            margin-top: 30px;
-        }
-
-        /* --- Features Section --- */
-        .features {
-            padding: 80px 5%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            font-weight: 900;
-            margin-bottom: 50px;
-            color: white;
-        }
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-bottom: 60px;
-        }
-        .feature-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border-light);
-            border-radius: 20px;
-            padding: 30px;
-            transition: all 0.3s;
-        }
-        .feature-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-5px);
-        }
-        .feature-icon {
-            font-size: 40px;
-            color: var(--accent);
-            margin-bottom: 20px;
-        }
-        .feature-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            color: white;
-        }
-        .feature-desc {
-            color: var(--accent-silver);
-            line-height: 1.6;
-            font-size: 14px;
-        }
-
-        /* --- How It Works Section --- */
-        .how-it-works {
-            padding: 80px 5%;
-            background: rgba(255, 255, 255, 0.02);
-        }
-        .steps-container {
-            display: flex;
-            justify-content: space-between;
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            flex-wrap: wrap;
-            gap: 30px;
-        }
-        .step {
-            flex: 1;
-            min-width: 250px;
-            text-align: center;
-            position: relative;
-            z-index: 2;
-        }
-        .step-number {
-            width: 60px;
-            height: 60px;
-            background: var(--accent);
-            color: #000;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            font-weight: 900;
-            margin: 0 auto 20px;
-        }
-        .step-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            color: white;
-        }
-        .step-desc {
-            color: var(--accent-silver);
-            line-height: 1.6;
-            font-size: 14px;
-        }
-
-        /* --- Installment Calculator --- */
-        .calculator {
-            padding: 80px 5%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .calculator-container {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border-light);
-            border-radius: 24px;
-            padding: 40px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-        }
-        @media (max-width: 768px) {
-            .calculator-container {
-                grid-template-columns: 1fr;
-            }
-        }
-        .calculator-inputs, .calculator-results {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        .input-group {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .input-group label {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--accent-silver);
-        }
-        .input-group input, .input-group select {
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border-light);
-            border-radius: 12px;
-            color: white;
-            font-size: 16px;
-            outline: none;
-            transition: border-color 0.3s;
-        }
-        .input-group input:focus, .input-group select:focus {
-            border-color: var(--accent);
-        }
-        .slider-container {
-            margin-top: 10px;
-        }
-        .slider {
-            width: 100%;
-            height: 8px;
-            -webkit-appearance: none;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
-            outline: none;
-        }
-        .slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 20px;
-            height: 20px;
-            background: var(--accent);
-            border-radius: 50%;
-            cursor: pointer;
-        }
-        .slider-values {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
-            color: var(--accent-silver);
-            font-size: 12px;
-        }
-        .result-card {
-            background: rgba(0, 200, 150, 0.1);
+        .nav-item:hover { color: var(--accent); text-shadow: 0 0 10px var(--accent); }
+        
+        .btn-connect {
             border: 1px solid var(--accent);
-            border-radius: 16px;
-            padding: 25px;
-            margin-bottom: 20px;
-        }
-        .result-title {
-            font-size: 14px;
-            color: var(--accent-silver);
-            margin-bottom: 10px;
-        }
-        .result-value {
-            font-size: 2rem;
-            font-weight: 900;
-            color: var(--accent);
-        }
-        .result-note {
-            font-size: 12px;
-            color: var(--accent-silver);
-            margin-top: 10px;
-            line-height: 1.5;
+            padding: 8px 20px;
+            border-radius: 4px;
         }
 
-        /* --- Terms Section --- */
-        .terms {
-            padding: 80px 5%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .terms-grid {
+        /* --- Bento Grid --- */
+        .hero-container { padding: 20px; perspective: 2000px; }
+        .hero-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            height: 85vh;
+            min-height: 650px;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 15px;
         }
-        .term-card {
-            background: rgba(255, 255, 255, 0.03);
+
+        .bento-item {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            background: #111;
             border: 1px solid var(--border-light);
-            border-radius: 16px;
-            padding: 25px;
-        }
-        .term-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            color: white;
-        }
-        .term-desc {
-            color: var(--accent-silver);
-            line-height: 1.6;
-            font-size: 14px;
-        }
-        .term-warning {
-            border-left: 4px solid var(--danger);
-            padding-left: 15px;
-            margin-top: 20px;
+            transition: transform 0.6s var(--animation-timing), box-shadow 0.6s var(--animation-timing);
         }
 
-        /* --- CTA Section --- */
-        .cta-section {
-            padding: 80px 5%;
-            text-align: center;
-            background: linear-gradient(135deg, rgba(0, 200, 150, 0.1) 0%, transparent 100%);
+        .item-main {
+            grid-column: 1 / 4; grid-row: 1 / 3;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent), 
+                        url('https://i.pinimg.com/736x/0e/d1/75/0ed1758cfaa868f0ca9c328ba7c3b433.jpg');
+            background-size: cover; background-position: center;
+            display: flex; flex-direction: column; justify-content: flex-end;
+            padding: 50px;
         }
-        .cta-title {
-            font-size: 2.5rem;
-            font-weight: 900;
-            margin-bottom: 20px;
-            color: white;
+
+        .item-top-right {
+            grid-column: 4 / 6; grid-row: 1 / 2;
+            background: url('https://i.pinimg.com/736x/e1/f0/a5/e1f0a56f20ce3f77c84c08fad4602e96.jpg');
+            background-size: cover;
         }
-        .cta-description {
-            color: var(--accent-silver);
-            max-width: 700px;
-            margin: 0 auto 40px;
-            font-size: 16px;
-            line-height: 1.7;
+
+        .item-stat {
+            grid-column: 4 / 5; grid-row: 2 / 3;
+            padding: 30px; display: flex; flex-direction: column; justify-content: center;
         }
-        .cta-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
+
+        .item-info {
+            grid-column: 5 / 6; grid-row: 2 / 3;
+            background: linear-gradient(135deg, #1a1a1a, #000);
+            padding: 20px; display: flex; align-items: center; text-align: center;
         }
+
+        /* Hover Effects */
+        .hero-grid:hover .bento-item { transform: rotateY(-2deg) rotateX(1deg); }
+        .bento-item:hover {
+            transform: translateZ(50px) scale(1.02) !important;
+            z-index: 10; border-color: var(--accent);
+            box-shadow: 0 20px 40px rgba(0,242,255,0.2);
+        }
+
+        /* Typography */
+        h1 { font-size: clamp(2rem, 5vw, 4.5rem); line-height: 1; margin-bottom: 1rem; }
+        .location-text { color: var(--accent-silver); font-size: 0.9rem; margin-bottom: 2rem; max-width: 80%; }
+        
         .cta-btn {
-            padding: 18px 40px;
-            background: var(--accent);
-            color: #000;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 900;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
+            display: inline-block; padding: 15px 35px;
+            background: white; color: black; font-weight: 900;
+            text-decoration: none; font-size: 12px; letter-spacing: 2px;
+            text-transform: uppercase; border-radius: 50px; transition: 0.3s;
         }
-        .cta-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 200, 150, 0.2);
-        }
-        .cta-btn.secondary {
-            background: transparent;
-            color: var(--accent);
-            border: 2px solid var(--accent);
-        }
+        .cta-btn:hover { background: var(--accent); transform: translateY(-3px); }
 
-        /* --- Footer --- */
-        footer {
-            background: #080808;
-            padding: 60px 5% 40px;
-            text-align: center;
-            border-top: 1px solid var(--border-light);
+        /* Inventory */
+        .collection { padding: 80px 5%; max-width: 1400px; margin: 0 auto; }
+        .product-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;
         }
-        .footer-logo {
-            font-weight: 900;
-            letter-spacing: 5px;
-            font-size: 1.5rem;
-            margin-bottom: 20px;
+        .product-card {
+            background: #111; border: 1px solid var(--border-light);
+            border-radius: 20px; padding: 20px; transition: 0.3s;
         }
-        .footer-contact {
-            color: var(--accent-silver);
-            font-size: 12px;
-            margin-bottom: 30px;
-            line-height: 1.8;
-        }
-        .whatsapp-direct {
-            background: #25d366;
-            color: white;
-            padding: 12px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 20px;
-        }
+        .product-card:hover { border-color: var(--accent); transform: translateY(-5px); }
+        .product-card img { width: 100%; height: 250px; object-fit: contain; margin-bottom: 20px; }
 
-        /* --- WhatsApp Floating Button --- */
-        .wa-float {
-            position: fixed; 
-            bottom: 30px; 
-            right: 30px;
-            background: #25d366; 
-            color: white; 
-            width: 60px; 
-            height: 60px;
-            border-radius: 50px; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center;
-            font-size: 30px; 
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3); 
-            z-index: 1001;
-            text-decoration: none;
-            transition: transform 0.3s;
-        }
-        .wa-float:hover {
-            transform: scale(1.1);
-        }
-
-        /* --- Responsive --- */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .section-title { font-size: 2rem; }
-            .steps-container { flex-direction: column; }
-            .cta-buttons { flex-direction: column; }
-            .nav-links { gap: 1.5rem; }
-            .hero { padding: 70px 5% 40px; }
+        /* Mobile */
+        @media (max-width: 900px) {
+            header { padding: 1rem 2rem; }
+            .nav-links { display: none; }
+            .hero-grid { display: flex; flex-direction: column; height: auto; }
+            .item-main { height: 400px; padding: 30px; }
+            .item-top-right, .item-stat, .item-info { height: 200px; }
         }
     </style>
 </head>
 <body>
 
-<header>
-    <div class="logo-box">
-        <a href="index.html" class="logo">MINDWAY</a>
-    </div>
+<header class="main-header">
+    <div class="header-inner">
+        <div class="logo-container">
+            <div class="logo-wrapper">
+                <img class="logo-img" src="lyt.jpeg" alt="MINDWAY Logo">
+                <div class="logo-glow"></div>
+            </div>
+            <div class="brand-text">
+                <span class="brand-name">Mindway Mobiles</span>
+                <span class="brand-sub"></span>
+            </div>
+        </div>
 
-    <nav>
-        <ul class="nav-links">
-            <li><a href="index.html" class="nav-item">Home</a></li>
-            <li><a href="about.html" class="nav-item">About </a></li>
-            <li><a href="laptop.html" class="nav-item">Laptops</a></li>
-            <li><a href="Phone.html" class="nav-item">Phones</a></li>
-        
-  
-           
-        </ul>
-    </nav>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle">
+        <label for="nav-toggle" class="nav-toggle-label">
+            <span></span>
+        </label>
+
+        <nav class="navbar">
+            <ul class="nav-links">
+                      <li><a href="index.html" class="nav-item">Home </a></li>
+                <li><a href="about.html" class="nav-item">About Us</a></li>
+                <li><a href="laptop.html" class="nav-item">Laptops</a></li>
+                <li><a href="Phone.html" class="nav-item">Phones</a></li>
+                <li><a href="paysmall.html" class="nav-item">Pay Small Small</a></li>
+                <li><a href="Contact.html" class="nav-item btn-connect">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
 </header>
+
+<style>
+    :root {
+        --neon-cyan: #00f3ff;
+        --neon-magenta: #737373;
+        --bg-dark: #050505;
+        --text-main: #e2e8f0;
+    }
+
+    /* Core Layout */
+    .main-header {
+        background: rgba(5, 5, 5, 0.95);
+        backdrop-filter: blur(15px);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        padding: 0 5%;
+        border-bottom: 2px solid #1a1a1a;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .header-inner {
+        max-width: 1400px;
+        height: 80px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+    }
+
+    /* Logo & Branding */
+    .logo-container { display: flex; align-items: center; gap: 12px; }
+    .logo-img {
+        height: 50px; width: 60px;
+        border: 1px solid var(--neon-cyan);
+        filter: drop-shadow(0 0 5px var(--neon-cyan));
+    }
+    .brand-name {
+        font-size: 1.4rem; font-weight: 900; color: #fff;
+        text-transform: uppercase; letter-spacing: 2px;
+        text-shadow: 2px 0 var(--neon-magenta), -1px 0 var(--neon-cyan);
+    }
+    .brand-sub {
+        font-size: 0.65rem; color: var(--neon-cyan);
+        text-transform: uppercase; letter-spacing: 0.3em;
+    }
+
+    /* Desktop Navigation */
+    .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .nav-item {
+        text-decoration: none;
+        color: var(--text-main);
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        padding: 8px 15px;
+        transition: all 0.3s;
+        border: 1px solid transparent;
+    }
+
+    .nav-item:hover {
+        color: var(--neon-cyan);
+        border: 1px solid var(--neon-cyan);
+        box-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+    }
+
+    .btn-connect {
+        border: 1px solid var(--neon-magenta) !important;
+        color: var(--neon-magenta) !important;
+        clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
+    }
+
+    /* --- MOBILE RESPONSIVE LOGIC --- */
+
+    .nav-toggle { display: none; } /* Hide checkbox */
+
+    .nav-toggle-label {
+        display: none; /* Hidden on desktop */
+        cursor: pointer;
+        padding: 10px;
+    }
+
+    .nav-toggle-label span,
+    .nav-toggle-label span::before,
+    .nav-toggle-label span::after {
+        display: block;
+        background: var(--neon-cyan);
+        height: 2px;
+        width: 25px;
+        position: relative;
+        transition: all 0.3s;
+    }
+
+    .nav-toggle-label span::before { content: ''; top: 8px; }
+    .nav-toggle-label span::after { content: ''; bottom: 10px; }
+
+    @media (max-width: 950px) {
+        .nav-toggle-label { display: block; z-index: 1001; }
+
+        .navbar {
+            position: fixed;
+            top: 0; left: -100%; /* Hidden off-screen */
+            width: 80%;
+            height: 100vh;
+            background: rgba(5, 5, 5, 0.98);
+            border-right: 2px solid var(--neon-cyan);
+            transition: left 0.4s cubic-bezier(0.77,0,0.175,1);
+            padding-top: 100px;
+            box-shadow: 10px 0 30px rgba(0, 243, 255, 0.2);
+        }
+
+        /* Show menu when checkbox is checked */
+        .nav-toggle:checked ~ .navbar {
+            left: 0;
+        }
+
+        /* Animate Hamburger to X */
+        .nav-toggle:checked ~ .nav-toggle-label span { background: transparent; }
+        .nav-toggle:checked ~ .nav-toggle-label span::before { transform: rotate(45deg); top: 0; }
+        .nav-toggle:checked ~ .nav-toggle-label span::after { transform: rotate(-45deg); bottom: 2px; }
+
+        .nav-links {
+            flex-direction: column;
+            gap: 20px;
+            align-items: flex-start;
+            padding-left: 40px;
+        }
+
+        .nav-item {
+            font-size: 1.2rem;
+            width: 100%;
+        }
+
+        /* Scanline effect for mobile menu */
+        .navbar::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 243, 255, 0.05) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            background-size: 100% 4px, 3px 100%;
+            pointer-events: none;
+        }
+    }
+</style>
+
+
+</body>
+</html>
+<style>
+    /* Hero Section */
+    .hero {
+        padding: 80px 5%;
+        max-width: 1400px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .hero-subtitle {
+        color: var(--accent);
+        font-size: 12px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+        font-size: clamp(2.5rem, 6vw, 5rem);
+        margin-bottom: 2rem;
+        line-height: 1.2;
+    }
+
+    .hero-description {
+        font-size: 1.1rem;
+        color: var(--accent-silver);
+        max-width: 800px;
+        margin: 0 auto 2rem;
+        line-height: 1.6;
+    }
+
+    .hero-highlight {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: rgba(0, 242, 255, 0.1);
+        padding: 15px 30px;
+        border-radius: 50px;
+        border: 1px solid var(--border-light);
+        color: var(--accent);
+        font-size: 0.9rem;
+        font-weight: 700;
+    }
+
+    /* Features Section */
+    .features {
+        padding: 80px 5%;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .section-title {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        text-align: center;
+        margin-bottom: 4rem;
+        position: relative;
+        padding-bottom: 1rem;
+    }
+
+    .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background: var(--accent);
+        border-radius: 2px;
+    }
+
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 40px;
+    }
+
+    .feature-card {
+        background: #111;
+        border: 1px solid var(--border-light);
+        border-radius: 20px;
+        padding: 40px;
+        text-align: center;
+        transition: all 0.3s var(--animation-timing);
+    }
+
+    .feature-card:hover {
+        border-color: var(--accent);
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 242, 255, 0.15);
+    }
+
+    .feature-icon {
+        font-size: 3rem;
+        color: var(--accent);
+        margin-bottom: 1.5rem;
+    }
+
+    .feature-title {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
+    }
+
+    .feature-desc {
+        color: var(--accent-silver);
+        line-height: 1.6;
+        font-size: 0.95rem;
+    }
+
+    /* How It Works */
+    .how-it-works {
+        padding: 80px 5%;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .steps-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        position: relative;
+    }
+
+    .step {
+        background: linear-gradient(135deg, #1a1a1a, #111);
+        border: 1px solid var(--border-light);
+        border-radius: 20px;
+        padding: 40px 30px;
+        text-align: center;
+        transition: all 0.3s var(--animation-timing);
+        position: relative;
+    }
+
+    .step:hover {
+        border-color: var(--accent);
+        transform: translateY(-8px);
+        box-shadow: 0 15px 35px rgba(0, 242, 255, 0.2);
+    }
+
+    .step-number {
+        font-size: 3rem;
+        font-weight: 900;
+        color: var(--accent);
+        margin-bottom: 1rem;
+        opacity: 0.3;
+    }
+
+    .step-title {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
+    }
+
+    .step-desc {
+        color: var(--accent-silver);
+        line-height: 1.6;
+        font-size: 0.95rem;
+    }
+
+    /* Terms Section */
+    .terms {
+        padding: 80px 5%;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .term-card {
+        background: #111;
+        border: 1px solid var(--border-light);
+        border-radius: 16px;
+        padding: 30px;
+        margin-bottom: 25px;
+        transition: all 0.3s;
+    }
+
+    .term-card:hover {
+        border-color: var(--accent);
+        box-shadow: 0 10px 30px rgba(0, 242, 255, 0.1);
+    }
+
+    .term-title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--accent);
+        margin-bottom: 1rem;
+    }
+
+    .term-desc {
+        color: var(--accent-silver);
+        line-height: 1.7;
+        font-size: 0.95rem;
+    }
+
+    .term-warning {
+        background: rgba(0, 242, 255, 0.05);
+        border-left: 3px solid var(--accent);
+        border-radius: 8px;
+        padding: 20px;
+        margin-top: 15px;
+    }
+
+    /* CTA Section */
+    .cta-section {
+        padding: 100px 5%;
+        max-width: 1400px;
+        margin: 0 auto;
+        text-align: center;
+        background: linear-gradient(135deg, rgba(0, 242, 255, 0.05), rgba(0, 242, 255, 0.02));
+        border-radius: 24px;
+        border: 1px solid var(--border-light);
+    }
+
+    .cta-title {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        margin-bottom: 1.5rem;
+    }
+
+    .cta-description {
+        font-size: 1.1rem;
+        color: var(--accent-silver);
+        max-width: 700px;
+        margin: 0 auto 2.5rem;
+        line-height: 1.6;
+    }
+
+    .cta-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .cta-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 15px 35px;
+        background: var(--accent);
+        color: var(--tech-black);
+        text-decoration: none;
+        font-weight: 900;
+        font-size: 11px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        border-radius: 50px;
+        border: 2px solid var(--accent);
+        transition: all 0.3s;
+        cursor: pointer;
+    }
+
+    .cta-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(0, 242, 255, 0.3);
+    }
+
+    .cta-btn.secondary {
+        background: transparent;
+        color: var(--accent);
+    }
+
+    .cta-btn.secondary:hover {
+        background: rgba(0, 242, 255, 0.1);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+        .hero { padding: 60px 2%; }
+        .features, .how-it-works, .terms { padding: 60px 2%; }
+        .section-title { margin-bottom: 2.5rem; }
+        .features-grid, .steps-container { gap: 20px; }
+        .cta-buttons { flex-direction: column; }
+        .cta-btn { width: 100%; justify-content: center; }
+    }
+</style>
 
 <section class="hero">
     <div class="hero-subtitle">Flexible Payment Solution</div>
@@ -565,45 +699,38 @@
     </div>
 </section>
 
-
-
 <section class="terms">
     <h2 class="section-title">Terms and Conditions</h2>
         
-        <div class="term-card">
-            <h3 class="term-title">Payment Rules</h3>
-            <p class="term-desc">
-                • Minimum 20% down payment required<br>
-                • Maximum payment period: 12 months<br>
-               
-            </p>
-        </div>
+    <div class="term-card">
+        <h3 class="term-title">Payment Rules</h3>
+        <p class="term-desc">
+            • Minimum 20% down payment required<br>
+            • Maximum payment period: 12 months<br>
+        </p>
+    </div>
         
-        <div class="term-card">
-            <h3 class="term-title">Product Reservation</h3>
-            <p class="term-desc">
-                • Product price locked at start date<br>
-                • Item reserved exclusively for you<br>
-                • Full warranty applies upon collection<br>
-                • Includes all original accessories
-            </p>
-        </div>
+    <div class="term-card">
+        <h3 class="term-title">Product Reservation</h3>
+        <p class="term-desc">
+            • Product price locked at start date<br>
+            • Item reserved exclusively for you<br>
+            • Full warranty applies upon collection<br>
+            • Includes all original accessories
+        </p>
+    </div>
         
-        <div class="term-card">
-            <h3 class="term-title">Important Notes</h3>
+    <div class="term-card">
+        <h3 class="term-title">Important Notes</h3>
+        <p class="term-desc">
+            • No refunds on completed payments<br>
+            • Product collection only after full payment<br>
+            • Contact us for payment date adjustments
+        </p>
+        <div class="term-warning">
             <p class="term-desc">
-                • No refunds on completed payments<br>
-                • Product collection only after full payment<br>
-           
-                • Contact us for payment date adjustments
+                <strong>Note:</strong> Failure to collect the product after payment completion - product will be held for a maximum of 6 months. After this period, Mindway Tech reserves the right to resell the item.
             </p>
-            <div class="term-warning">
-                <p class="term-desc">
-                    <strong>Note:</strong> failure to collect the product after payment completion 
-                    product will be held for a maximum of 6 months . After this period , Mindway Tech
-                     reserves the right to resell the item 
-                </p>
-            </div>
         </div>
     </div>
 </section>
@@ -616,10 +743,10 @@
         plan that works for you.
     </p>
     <div class="cta-buttons">
-        <a href="https://wa.me/2349061407613?text=Hello%20Mindway%20Tech!%20I'm%20interested%20in%20the%20Pay%20Small%20Small%20plan.%20Please%20provide%20more%20information." class="cta-btn" target="_blank">
+        <a href="https://wa.me/2348104564543?text=Hello%20Mindway%20Tech!%20I'm%20interested%20in%20the%20Pay%20Small%20Small%20plan.%20Please%20provide%20more%20information." class="cta-btn" target="_blank">
             <i class="fab fa-whatsapp"></i> Start on WhatsApp
         </a>
-        <a href="tel:+2349061407613" class="cta-btn secondary">
+        <a href="tel:+2348104564543" class="cta-btn secondary">
             <i class="fas fa-phone"></i> Call Us Now
         </a>
         <a href="phones.html" class="cta-btn secondary">
@@ -628,186 +755,99 @@
     </div>
 </section>
 
+<script>
+    // Smooth scroll animation on load
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.feature-card, .step, .term-card').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'all 0.6s var(--animation-timing)';
+        observer.observe(el);
+    });
+</script>
+
+
+
+
+<style>
+    footer {
+        background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+        border-top: 1px solid var(--border-light);
+        padding: 60px 5%;
+        max-width: 1400px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .footer-logo {
+        font-size: 1.8rem;
+        font-weight: 900;
+        letter-spacing: 3px;
+        color: var(--accent);
+        margin-bottom: 2rem;
+        text-shadow: 0 0 10px rgba(0, 242, 255, 0.3);
+    }
+
+    .footer-contact {
+        color: var(--accent-silver);
+        font-size: 0.9rem;
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+    }
+
+    .whatsapp-direct {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 30px;
+        background: #25D366;
+        color: white;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 0.9rem;
+        border-radius: 50px;
+        transition: all 0.3s var(--animation-timing);
+        margin-top: 1.5rem;
+    }
+
+    .whatsapp-direct:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+    }
+
+    @media (max-width: 900px) {
+        footer { padding: 40px 2%; }
+        .footer-logo { font-size: 1.4rem; }
+        .footer-contact { font-size: 0.85rem; }
+    }
+</style>
+
 <footer>
     <div class="footer-logo">MINDWAY TECH</div>
     <p class="footer-contact">
-        Abuja, Nigeria | +234 906 140 7613<br>
-        Open Monday - Saturday: 9AM - 7PM<br>
-        Email: info@mindwaytech.com
+        Abuja, Nigeria | 0810 456 4543 and 07038557377<br>
+        Open Monday - Saturday: 9AM - 7PM | Sunday: 12PM - 5PM<br>
+        Email: mindwaymobilesltd@gmail.com
     </p>
     <p style="color: var(--accent-silver); font-size: 12px; max-width: 600px; margin: 0 auto 20px;">
-        "Pay Small Small" is a flexible payment arrangement, not a loan. All products remain property 
-        of Mindway Tech until final payment is completed. Prices and terms are subject to change.
+        Your trusted partner for premium technology solutions in Abuja. 
+        Sales • Repairs • Trade-Ins • Installment Plans
     </p>
-    <a href="https://wa.me/2349061407613" class="whatsapp-direct" target="_blank">
+    <a href="https://wa.me/2348104564543" class="whatsapp-direct" target="_blank">
         <i class="fab fa-whatsapp"></i> Chat Directly on WhatsApp
     </a>
 </footer>
 
-<a href="https://wa.me/2349061407613" class="wa-float" target="_blank">
-    <i class="fab fa-whatsapp"></i>
-</a>
-
-<script>
-    // WhatsApp Number
-    const whatsappNumber = "2349061407613";
-
-    // Installment Calculator
-    function updateCalculator() {
-        // Get values from inputs
-        const productPrice = parseInt(document.getElementById('productPrice').value) || 500000;
-        const downPaymentPercent = parseInt(document.getElementById('downPaymentSlider').value) || 20;
-        const duration = parseInt(document.getElementById('paymentDuration').value) || 6;
-        const frequency = document.getElementById('paymentFrequency').value;
-        
-        // Calculate down payment amount
-        const downPaymentAmount = Math.round(productPrice * (downPaymentPercent / 100));
-        const remainingBalance = productPrice - downPaymentAmount;
-        
-        // Calculate installment based on frequency
-        let installmentAmount = 0;
-        let installmentLabel = '';
-        let installmentNote = '';
-        
-        if (frequency === 'weekly') {
-            const weeks = duration * 4; // Approximate weeks in months
-            installmentAmount = Math.ceil(remainingBalance / weeks);
-            installmentLabel = 'Weekly Installment';
-            installmentNote = `${weeks} payments of ₦${installmentAmount.toLocaleString()} each`;
-        } else if (frequency === 'biweekly') {
-            const fortnights = duration * 2; // Every 2 weeks
-            installmentAmount = Math.ceil(remainingBalance / fortnights);
-            installmentLabel = 'Bi-Weekly Installment';
-            installmentNote = `${fortnights} payments of ₦${installmentAmount.toLocaleString()} each`;
-        } else { // monthly
-            installmentAmount = Math.ceil(remainingBalance / duration);
-            installmentLabel = 'Monthly Installment';
-            installmentNote = `${duration} payments of ₦${installmentAmount.toLocaleString()} each`;
-        }
-        
-        // Update display
-        document.getElementById('totalPrice').textContent = `₦${productPrice.toLocaleString()}`;
-        document.getElementById('downPayment').value = downPaymentAmount;
-        document.getElementById('initialPayment').textContent = `₦${downPaymentAmount.toLocaleString()}`;
-        document.getElementById('remainingBalance').textContent = `₦${remainingBalance.toLocaleString()}`;
-        document.getElementById('installmentLabel').textContent = installmentLabel;
-        document.getElementById('installmentAmount').textContent = `₦${installmentAmount.toLocaleString()}`;
-        document.getElementById('installmentNote').textContent = installmentNote;
-    }
-
-    // Sync slider and input
-    document.getElementById('downPaymentSlider').addEventListener('input', function() {
-        const productPrice = parseInt(document.getElementById('productPrice').value) || 500000;
-        const percent = parseInt(this.value);
-        const amount = Math.round(productPrice * (percent / 100));
-        document.getElementById('downPayment').value = amount;
-        updateCalculator();
-    });
-
-    document.getElementById('downPayment').addEventListener('input', function() {
-        const productPrice = parseInt(document.getElementById('productPrice').value) || 500000;
-        const amount = parseInt(this.value) || 0;
-        const percent = Math.min(50, Math.round((amount / productPrice) * 100));
-        document.getElementById('downPaymentSlider').value = percent;
-        updateCalculator();
-    });
-
-    // Add event listeners to other inputs
-    document.getElementById('productPrice').addEventListener('input', updateCalculator);
-    document.getElementById('paymentDuration').addEventListener('change', updateCalculator);
-    document.getElementById('paymentFrequency').addEventListener('change', updateCalculator);
-
-    // Initialize calculator
-    document.addEventListener('DOMContentLoaded', function() {
-        updateCalculator();
-        
-        // Add sample payment plan examples
-        const examples = [
-            {price: 750000, duration: 6, frequency: 'monthly', down: 30},
-            {price: 1200000, duration: 8, frequency: 'biweekly', down: 25},
-            {price: 350000, duration: 4, frequency: 'weekly', down: 20}
-        ];
-        
-        // Optional: Add example buttons
-        const examplesContainer = document.createElement('div');
-        examplesContainer.style.marginTop = '30px';
-        examplesContainer.style.textAlign = 'center';
-        examplesContainer.innerHTML = `
-            <div style="color: var(--accent-silver); margin-bottom: 10px; font-size: 14px;">
-                <i class="fas fa-lightbulb"></i> Try these examples:
-            </div>
-            <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-                ${examples.map((ex, i) => `
-                    <button class="example-btn" style="
-                        background: rgba(0, 200, 150, 0.1);
-                        border: 1px solid var(--accent);
-                        color: var(--accent);
-                        padding: 8px 16px;
-                        border-radius: 20px;
-                        font-size: 12px;
-                        cursor: pointer;
-                    ">
-                        ₦${(ex.price/1000).toFixed(0)}K over ${ex.duration} months
-                    </button>
-                `).join('')}
-            </div>
-        `;
-        
-        document.querySelector('.calculator').appendChild(examplesContainer);
-        
-        // Add click handlers to example buttons
-        setTimeout(() => {
-            const exampleBtns = document.querySelectorAll('.example-btn');
-            exampleBtns.forEach((btn, i) => {
-                btn.addEventListener('click', () => {
-                    const ex = examples[i];
-                    document.getElementById('productPrice').value = ex.price;
-                    document.getElementById('paymentDuration').value = ex.duration;
-                    document.getElementById('paymentFrequency').value = ex.frequency;
-                    document.getElementById('downPaymentSlider').value = ex.down;
-                    updateCalculator();
-                });
-            });
-        }, 100);
-    });
-
-    // WhatsApp message generator for payment plans
-    function generateWhatsAppMessage() {
-        const productPrice = parseInt(document.getElementById('productPrice').value) || 500000;
-        const downPayment = parseInt(document.getElementById('downPayment').value) || 100000;
-        const duration = document.getElementById('paymentDuration').value;
-        const frequency = document.getElementById('paymentFrequency').value;
-        
-        const frequencyText = frequency === 'weekly' ? 'weekly' : 
-                             frequency === 'biweekly' ? 'every 2 weeks' : 'monthly';
-        
-        return `Hello Mindway Tech! I'm interested in the "Pay Small Small" plan.\n\n` +
-               `I'd like to pay for a product worth: ₦${productPrice.toLocaleString()}\n` +
-               `With initial payment of: ₦${downPayment.toLocaleString()}\n` +
-               `And pay the balance over ${duration} months (${frequencyText}).\n\n` +
-               `Please provide more details and help me set up this payment plan.`;
-    }
-
-    // Update WhatsApp CTA button
-    document.addEventListener('DOMContentLoaded', function() {
-        const whatsappBtn = document.querySelector('.cta-buttons .cta-btn');
-        if (whatsappBtn) {
-            whatsappBtn.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(generateWhatsAppMessage())}`;
-        }
-        
-        // Update WhatsApp link when calculator changes
-        const calculatorInputs = document.querySelectorAll('.calculator-inputs input, .calculator-inputs select');
-        calculatorInputs.forEach(input => {
-            input.addEventListener('change', () => {
-                const whatsappBtn = document.querySelector('.cta-buttons .cta-btn');
-                if (whatsappBtn) {
-                    whatsappBtn.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(generateWhatsAppMessage())}`;
-                }
-            });
-        });
-    });
-</script>
-
-</body>
-
-</html>
