@@ -1,479 +1,342 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Complete iPhone Inventory | Mindway Tech Abuja</title>
+    <title>MINDWAY | Next-Gen Gadgets Abuja</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --apple-blue: #007aff;
-            --apple-gray: #8e8e93;
-            --apple-black: #000000;
-            --apple-white: #ffffff;
-            --apple-silver: #f2f2f7;
-            --apple-gold: #ffd700;
-            --apple-graphite: #5c5c5c;
-            --apple-purple: #5856d6;
-            --apple-pink: #ff2d55;
-            --apple-green: #34c759;
-            --accent: var(--apple-blue);
-            --accent-silver: var(--apple-gray);
-            --tech-black: var(--apple-black);
-            --clinical-white: var(--apple-white);
-            --border-light: rgba(255, 255, 255, 0.15);
-            --glass: rgba(0, 0, 0, 0.85);
+            --accent: #00f2ff;
+            --accent-silver: #a1a1a6;
+            --tech-black: #050505;
+            --clinical-white: #ffffff;
+            --border-light: rgba(255, 255, 255, 0.1);
+            --animation-timing: cubic-bezier(0.2, 1, 0.2, 1);
+            --glass: rgba(10, 10, 10, 0.8);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body { 
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; 
+            font-family: 'Inter', sans-serif; 
             background: var(--tech-black); 
             color: white;
             overflow-x: hidden; 
         }
 
-        /* --- Global Nav --- */
+        /* --- Navigation --- */
         header {
             background: var(--glass);
-            backdrop-filter: blur(20px);
+            backdrop-filter: blur(15px);
             padding: 1rem 5%;
             display: flex; justify-content: space-between; align-items: center;
             position: sticky; top: 0; z-index: 1000;
             border-bottom: 1px solid var(--border-light);
         }
-        .logo-box .logo { 
-            font-weight: 900; 
-            letter-spacing: 5px; 
-            font-size: 1.2rem; 
-            text-decoration: none; 
-            color: white; 
-            display: block; 
-        }
-        .nav-links { 
-            display: flex; 
-            list-style: none; 
-            gap: 2.5rem; 
-            align-items: center; 
-        }
+
+        .logo-box .logo { font-weight: 900; letter-spacing: 5px; font-size: 1.2rem; }
+        .status-tag { font-size: 9px; letter-spacing: 2px; color: var(--accent); text-transform: uppercase; }
+
+        .nav-links { display: flex; list-style: none; gap: 2.5rem; align-items: center; }
         .nav-item { 
-            text-decoration: none; 
-            color: var(--accent-silver); 
-            font-size: 11px; 
-            letter-spacing: 2px; 
-            text-transform: uppercase; 
-            transition: color 0.3s;
-        }
-        .nav-item:hover { color: var(--accent); }
-
-        /* --- Hero Section --- */
-        .iphone-hero {
-            padding: 100px 5% 50px;
-            text-align: center;
-            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        .iphone-hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 50% 20%, rgba(0, 122, 255, 0.1) 0%, transparent 70%);
-            pointer-events: none;
-        }
-        .hero-subtitle {
-            color: var(--accent);
-            letter-spacing: 4px;
-            font-size: 12px;
-            font-weight: 700;
+            text-decoration: none; color: var(--accent-silver); 
+            font-size: 11px; letter-spacing: 2px; transition: 0.3s; 
             text-transform: uppercase;
-            margin-bottom: 15px;
         }
-        .iphone-hero h1 { 
-            font-size: 4.5rem; 
-            font-weight: 900; 
-            letter-spacing: -3px; 
-            margin-bottom: 10px;
-            background: linear-gradient(to right, #ffffff, var(--apple-gray));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .hero-description {
-            color: var(--accent-silver);
-            max-width: 700px;
-            margin: 25px auto 40px;
-            font-size: 15px;
-            line-height: 1.7;
-            font-weight: 300;
-        }
-
-        /* --- iPhone Features Bar --- */
-        .features-bar {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            padding: 30px 5%;
-            background: rgba(255, 255, 255, 0.03);
-            border-top: 1px solid var(--border-light);
-            border-bottom: 1px solid var(--border-light);
-            flex-wrap: wrap;
-        }
-        .feature-item {
-            text-align: center;
-            flex: 1;
-            min-width: 150px;
-        }
-        .feature-icon {
-            font-size: 24px;
-            color: var(--accent);
-            margin-bottom: 10px;
-        }
-        .feature-title {
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 5px;
-        }
-        .feature-desc {
-            font-size: 11px;
-            color: var(--accent-silver);
-            line-height: 1.5;
-        }
-
-        /* --- Filter Bar --- */
-        .filter-bar {
-            display: flex; 
-            justify-content: center; 
-            gap: 12px; 
-            padding: 30px 5%;
-            position: sticky; 
-            top: 75px; 
-            background: var(--tech-black); 
-            z-index: 900;
-            flex-wrap: wrap;
-            border-bottom: 1px solid var(--border-light);
-        }
-        .filter-btn {
-            background: transparent; 
-            border: 1px solid var(--border-light); 
-            color: white;
-            padding: 10px 22px; 
-            border-radius: 50px; 
-            cursor: pointer; 
-            font-size: 11px;
-            letter-spacing: 1px; 
-            text-transform: uppercase; 
-            transition: all 0.3s;
-            white-space: nowrap;
-        }
-        .filter-btn.active, .filter-btn:hover { 
-            background: var(--accent); 
-            color: #000; 
-            border-color: var(--accent); 
-            font-weight: 700; 
-        }
-
-        /* --- Series Badges --- */
-        .series-badges {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            padding: 20px 5%;
-            flex-wrap: wrap;
-        }
-        .series-badge {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border-light);
-            color: var(--accent-silver);
+        .nav-item:hover { color: var(--accent); text-shadow: 0 0 10px var(--accent); }
+        
+        .btn-connect {
+            border: 1px solid var(--accent);
             padding: 8px 20px;
-            border-radius: 50px;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .series-badge.active, .series-badge:hover {
-            background: var(--accent);
-            color: #000;
-            border-color: var(--accent);
+            border-radius: 4px;
         }
 
-        /* --- Product Grid --- */
-        .inventory-section { 
-            padding: 40px 5% 100px; 
-            max-width: 1600px; 
-            margin: 0 auto; 
-        }
-        .grid {
+        /* --- Bento Grid --- */
+        .hero-container { padding: 20px; perspective: 2000px; }
+        .hero-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
+            height: 85vh;
+            min-height: 650px;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 15px;
         }
 
-        .iphone-card {
-            background: #0d0d0d;
-            border: 1px solid var(--border-light);
-            border-radius: 24px;
-            padding: 25px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        .bento-item {
             position: relative;
-            display: flex;
-            flex-direction: column;
-        }
-        .iphone-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent);
-            box-shadow: 0 15px 30px rgba(0, 122, 255, 0.15);
+            border-radius: 24px;
+            overflow: hidden;
+            background: #111;
+            border: 1px solid var(--border-light);
+            transition: transform 0.6s var(--animation-timing), box-shadow 0.6s var(--animation-timing);
         }
 
-        .iphone-badge {
-            position: absolute; 
-            top: 15px; 
-            left: 15px;
-            background: rgba(255,255,255,0.05); 
-            color: var(--accent-silver);
-            padding: 4px 12px; 
-            border-radius: 100px; 
-            font-size: 10px; 
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .badge-new { background: var(--accent); color: #000; }
-        .badge-preowned { background: #ff9500; color: #000; }
-        .badge-refurbished { background: var(--apple-green); color: #000; }
-        .badge-limited { background: var(--apple-purple); color: white; }
-
-        .iphone-year {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 10px;
-            color: var(--accent-silver);
-            background: rgba(255,255,255,0.05);
-            padding: 3px 10px;
-            border-radius: 100px;
-            font-weight: 700;
+        .item-main {
+            grid-column: 1 / 4; grid-row: 1 / 3;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent), 
+                        url('https://i.pinimg.com/736x/0e/d1/75/0ed1758cfaa868f0ca9c328ba7c3b433.jpg');
+            background-size: cover; background-position: center;
+            display: flex; flex-direction: column; justify-content: flex-end;
+            padding: 50px;
         }
 
-        .iphone-color {
-            display: flex;
-            align-items: center;
-            margin-top: 5px;
-            margin-bottom: 15px;
-        }
-        .color-dot {
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            margin-right: 8px;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-        .color-name {
-            font-size: 10px;
-            color: var(--accent-silver);
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .item-top-right {
+            grid-column: 4 / 6; grid-row: 1 / 2;
+            background: url('https://i.pinimg.com/736x/e1/f0/a5/e1f0a56f20ce3f77c84c08fad4602e96.jpg');
+            background-size: cover;
         }
 
-        .iphone-info h3 { 
-            font-size: 1.4rem; 
-            font-weight: 700; 
-            margin-bottom: 5px; 
-            margin-top: 10px;
+        .item-stat {
+            grid-column: 4 / 5; grid-row: 2 / 3;
+            padding: 30px; display: flex; flex-direction: column; justify-content: center;
         }
-        .iphone-series {
-            color: var(--accent);
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-weight: 700;
-            margin-bottom: 10px;
+
+        .item-info {
+            grid-column: 5 / 6; grid-row: 2 / 3;
+            background: linear-gradient(135deg, #1a1a1a, #000);
+            padding: 20px; display: flex; align-items: center; text-align: center;
         }
-        .specs { 
-            font-size: 13px; 
-            color: var(--accent-silver); 
-            margin-bottom: 15px; 
-            line-height: 1.6;
-            flex-grow: 1;
+
+        /* Hover Effects */
+        .hero-grid:hover .bento-item { transform: rotateY(-2deg) rotateX(1deg); }
+        .bento-item:hover {
+            transform: translateZ(50px) scale(1.02) !important;
+            z-index: 10; border-color: var(--accent);
+            box-shadow: 0 20px 40px rgba(0,242,255,0.2);
         }
-        .spec-highlight {
-            color: var(--accent);
-            font-weight: 600;
-        }
+
+        /* Typography */
+        h1 { font-size: clamp(2rem, 5vw, 4.5rem); line-height: 1; margin-bottom: 1rem; }
+        .location-text { color: var(--accent-silver); font-size: 0.9rem; margin-bottom: 2rem; max-width: 80%; }
         
-        .storage-options {
-            display: flex;
-            gap: 8px;
-            margin: 10px 0;
-            flex-wrap: wrap;
+        .cta-btn {
+            display: inline-block; padding: 15px 35px;
+            background: white; color: black; font-weight: 900;
+            text-decoration: none; font-size: 12px; letter-spacing: 2px;
+            text-transform: uppercase; border-radius: 50px; transition: 0.3s;
         }
-        .storage-badge {
-            background: rgba(255,255,255,0.05);
-            color: var(--accent-silver);
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 11px;
-            font-weight: 600;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-        .storage-badge.active, .storage-badge:hover {
-            background: var(--accent);
-            color: #000;
-        }
-        
-        .price-container {
-            margin: 20px 0;
-        }
-        .price-tag { 
-            font-size: 1.6rem; 
-            font-weight: 900; 
-            color: var(--accent); 
-            display: block; 
-        }
-        .price-note {
-            font-size: 10px;
-            color: var(--accent-silver);
-            margin-top: 5px;
-        }
+        .cta-btn:hover { background: var(--accent); transform: translateY(-3px); }
 
-        .buy-btn {
-            width: 100%; 
-            padding: 15px; 
-            background: white; 
-            color: black;
-            text-align: center; 
-            text-decoration: none; 
-            border-radius: 12px;
-            font-size: 12px; 
-            font-weight: 900; 
-            text-transform: uppercase;
-            letter-spacing: 1px; 
-            transition: 0.3s;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 10px;
+        /* Inventory */
+        .collection { padding: 80px 5%; max-width: 1400px; margin: 0 auto; }
+        .product-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;
         }
-        .buy-btn:hover { 
-            background: var(--accent); 
-            transform: scale(1.02);
+        .product-card {
+            background: #111; border: 1px solid var(--border-light);
+            border-radius: 20px; padding: 20px; transition: 0.3s;
         }
+        .product-card:hover { border-color: var(--accent); transform: translateY(-5px); }
+        .product-card img { width: 100%; height: 250px; object-fit: contain; margin-bottom: 20px; }
 
-        /* --- Footer --- */
-        footer {
-            background: #080808;
-            padding: 60px 5% 40px;
-            text-align: center;
-            border-top: 1px solid var(--border-light);
+        /* Mobile */
+        @media (max-width: 900px) {
+            header { padding: 1rem 2rem; }
+            .nav-links { display: none; }
+            .hero-grid { display: flex; flex-direction: column; height: auto; }
+            .item-main { height: 400px; padding: 30px; }
+            .item-top-right, .item-stat, .item-info { height: 200px; }
         }
-        .footer-logo {
-            font-weight: 900;
-            letter-spacing: 5px;
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-        }
-        .footer-contact {
-            color: var(--accent-silver);
-            font-size: 12px;
-            margin-bottom: 30px;
-            line-height: 1.8;
-        }
-        .whatsapp-direct {
-            background: #25d366;
-            color: white;
-            padding: 12px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        /* --- WhatsApp Floating Button --- */
-        .wa-float {
-            position: fixed; 
-            bottom: 30px; 
-            right: 30px;
-            background: #25d366; 
-            color: white; 
-            width: 60px; 
-            height: 60px;
-            border-radius: 50px; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center;
-            font-size: 30px; 
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3); 
-            z-index: 1001;
-            text-decoration: none;
-            transition: transform 0.3s;
-        }
-        .wa-float:hover {
-            transform: scale(1.1);
-        }
-
-        /* --- Responsive --- */
-        @media (max-width: 768px) {
-            .iphone-hero h1 { font-size: 2.8rem; }
-            .filter-bar, .series-badges { overflow-x: auto; justify-content: flex-start; padding: 20px; }
-            .grid { grid-template-columns: 1fr; }
-            .features-bar { gap: 20px; }
-            .nav-links { gap: 1.5rem; }
-            .iphone-hero { padding: 70px 5% 30px; }
-        }
-
-        /* --- Animation --- */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .iphone-card {
-            animation: fadeIn 0.5s ease-out forwards;
-            opacity: 0;
-        }
-        
-        .iphone-card:nth-child(1) { animation-delay: 0.1s; }
-        .iphone-card:nth-child(2) { animation-delay: 0.2s; }
-        .iphone-card:nth-child(3) { animation-delay: 0.3s; }
-        .iphone-card:nth-child(4) { animation-delay: 0.4s; }
-        .iphone-card:nth-child(5) { animation-delay: 0.5s; }
-        .iphone-card:nth-child(6) { animation-delay: 0.6s; }
     </style>
 </head>
 <body>
 
-<header>
-    <div class="logo-box">
-        <a href="index.html" class="logo">MINDWAY</a>
-    </div>
+<header class="main-header">
+    <div class="header-inner">
+        <div class="logo-container">
+            <div class="logo-wrapper">
+                <img class="logo-img" src="lyt.jpeg" alt="MINDWAY Logo">
+                <div class="logo-glow"></div>
+            </div>
+            <div class="brand-text">
+                <span class="brand-name">Mindway Mobiles</span>
+                <span class="brand-sub"></span>
+            </div>
+        </div>
 
-    <nav>
-        <ul class="nav-links">
-               <li><a href="about.html" class="nav-item">About  </a></li>
-            <li><a href="laptop.html" class="nav-item">Laptops</a></li>
-    
-            <li><a href="paysmall.html" class="nav-item">Pay Small Small </a></li>
-          
-        </ul>
-    </nav>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle">
+        <label for="nav-toggle" class="nav-toggle-label">
+            <span></span>
+        </label>
+
+        <nav class="navbar">
+            <ul class="nav-links">
+                      <li><a href="index.html" class="nav-item">Home </a></li>
+                <li><a href="about.html" class="nav-item">About Us</a></li>
+                <li><a href="laptop.html" class="nav-item">Laptops</a></li>
+                <li><a href="Phone.html" class="nav-item">Phones</a></li>
+                <li><a href="paysmall.html" class="nav-item">Pay Small Small</a></li>
+                <li><a href="Contact.html" class="nav-item btn-connect">Connect</a></li>
+            </ul>
+        </nav>
+    </div>
 </header>
+
+<style>
+    :root {
+        --neon-cyan: #00f3ff;
+        --neon-magenta: #737373;
+        --bg-dark: #050505;
+        --text-main: #e2e8f0;
+    }
+
+    /* Core Layout */
+    .main-header {
+        background: rgba(5, 5, 5, 0.95);
+        backdrop-filter: blur(15px);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        padding: 0 5%;
+        border-bottom: 2px solid #1a1a1a;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .header-inner {
+        max-width: 1400px;
+        height: 80px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+    }
+
+    /* Logo & Branding */
+    .logo-container { display: flex; align-items: center; gap: 12px; }
+    .logo-img {
+        height: 50px; width: 60px;
+        border: 1px solid var(--neon-cyan);
+        filter: drop-shadow(0 0 5px var(--neon-cyan));
+    }
+    .brand-name {
+        font-size: 1.4rem; font-weight: 900; color: #fff;
+        text-transform: uppercase; letter-spacing: 2px;
+        text-shadow: 2px 0 var(--neon-magenta), -1px 0 var(--neon-cyan);
+    }
+    .brand-sub {
+        font-size: 0.65rem; color: var(--neon-cyan);
+        text-transform: uppercase; letter-spacing: 0.3em;
+    }
+
+    /* Desktop Navigation */
+    .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .nav-item {
+        text-decoration: none;
+        color: var(--text-main);
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        padding: 8px 15px;
+        transition: all 0.3s;
+        border: 1px solid transparent;
+    }
+
+    .nav-item:hover {
+        color: var(--neon-cyan);
+        border: 1px solid var(--neon-cyan);
+        box-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+    }
+
+    .btn-connect {
+        border: 1px solid var(--neon-magenta) !important;
+        color: var(--neon-magenta) !important;
+        clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
+    }
+
+    /* --- MOBILE RESPONSIVE LOGIC --- */
+
+    .nav-toggle { display: none; } /* Hide checkbox */
+
+    .nav-toggle-label {
+        display: none; /* Hidden on desktop */
+        cursor: pointer;
+        padding: 10px;
+    }
+
+    .nav-toggle-label span,
+    .nav-toggle-label span::before,
+    .nav-toggle-label span::after {
+        display: block;
+        background: var(--neon-cyan);
+        height: 2px;
+        width: 25px;
+        position: relative;
+        transition: all 0.3s;
+    }
+
+    .nav-toggle-label span::before { content: ''; top: 8px; }
+    .nav-toggle-label span::after { content: ''; bottom: 10px; }
+
+    @media (max-width: 950px) {
+        .nav-toggle-label { display: block; z-index: 1001; }
+
+        .navbar {
+            position: fixed;
+            top: 0; left: -100%; /* Hidden off-screen */
+            width: 80%;
+            height: 100vh;
+            background: rgba(5, 5, 5, 0.98);
+            border-right: 2px solid var(--neon-cyan);
+            transition: left 0.4s cubic-bezier(0.77,0,0.175,1);
+            padding-top: 100px;
+            box-shadow: 10px 0 30px rgba(0, 243, 255, 0.2);
+        }
+
+        /* Show menu when checkbox is checked */
+        .nav-toggle:checked ~ .navbar {
+            left: 0;
+        }
+
+        /* Animate Hamburger to X */
+        .nav-toggle:checked ~ .nav-toggle-label span { background: transparent; }
+        .nav-toggle:checked ~ .nav-toggle-label span::before { transform: rotate(45deg); top: 0; }
+        .nav-toggle:checked ~ .nav-toggle-label span::after { transform: rotate(-45deg); bottom: 2px; }
+
+        .nav-links {
+            flex-direction: column;
+            gap: 20px;
+            align-items: flex-start;
+            padding-left: 40px;
+        }
+
+        .nav-item {
+            font-size: 1.2rem;
+            width: 100%;
+        }
+
+        /* Scanline effect for mobile menu */
+        .navbar::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 243, 255, 0.05) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            background-size: 100% 4px, 3px 100%;
+            pointer-events: none;
+        }
+    }
+</style>
+
+
+</body>
+</html>
+
+
+
+
+
+
 
 <section class="iphone-hero">
     <div class="hero-subtitle">Exclusive Phone Collection</div>
@@ -535,29 +398,9 @@
     </div>
 </main>
 
-<footer>
-    <div class="footer-logo">MINDWAY TECH</div>
-    <p class="footer-contact">
-        Abuja, Nigeria | +234 906 140 7613<br>
-        Open Monday - Saturday: 9AM - 7PM
-    </p>
-    <p style="color: var(--accent-silver); font-size: 12px; max-width: 600px; margin: 0 auto 20px;">
-        All iPhones are professionally inspected, cleaned, and tested. 
-        Includes original charger, cable, and box (when available). 
-        Battery health guaranteed minimum 85%. Prices subject to change.
-    </p>
-    <a href="https://wa.me/2349061407613" class="whatsapp-direct" target="_blank">
-        <i class="fab fa-whatsapp"></i> Chat Directly on WhatsApp
-    </a>
-</footer>
-
-<a href="https://wa.me/2349061407613" class="wa-float" target="_blank">
-    <i class="fab fa-whatsapp"></i>
-</a>
-
 <script>
     // WhatsApp Number
-    const whatsappNumber = "2349061407613";
+    const whatsappNumber = "2348104564543";
 
     // iPhone Data Array (Complete Collection)
     const iphones = [
@@ -671,7 +514,7 @@
             storage: "256GB",
             colors: ["Graphite", "Gold", "Silver", "Sierra Blue"],
             price: "₦750,000",
-            badge: "badge-refurbished",
+            badge: "badge-used",
             category: ["13", "pro", "max", "preowned"]
         },
         {
@@ -683,7 +526,7 @@
             storage: "128GB",
             colors: ["Graphite", "Gold", "Silver", "Sierra Blue"],
             price: "₦650,000",
-            badge: "badge-refurbished",
+            badge: "badge-used",
             category: ["13", "pro", "preowned"]
         },
         {
@@ -695,7 +538,7 @@
             storage: "128GB",
             colors: ["Midnight", "Starlight", "Pink", "Blue", "Green", "Red"],
             price: "₦550,000",
-            badge: "badge-refurbished",
+            badge: "badge-used",
             category: ["13", "preowned"]
         },
         {
@@ -707,7 +550,7 @@
             storage: "128GB",
             colors: ["Midnight", "Starlight", "Pink", "Blue", "Green"],
             price: "₦500,000",
-            badge: "badge-refurbished",
+            badge: "badge-used",
             category: ["13", "preowned"]
         },
 
@@ -721,7 +564,7 @@
             storage: "256GB",
             colors: ["Graphite", "Silver", "Gold", "Pacific Blue"],
             price: "₦600,000",
-            badge: "badge-refurbished",
+            badge: "badge-used",
             category: ["12", "pro", "max", "preowned"]
         },
         {
@@ -733,7 +576,7 @@
             storage: "128GB",
             colors: ["Graphite", "Silver", "Gold", "Pacific Blue"],
             price: "₦520,000",
-            badge: "badge-refurbished",
+            badge: "badge-used",
             category: ["12", "pro", "preowned"]
         },
         {
@@ -745,7 +588,7 @@
             storage: "128GB",
             colors: ["Black", "White", "Green", "Blue", "Purple", "Red"],
             price: "₦480,000",
-            badge: "badge-refurbished",
+            badge: "badge-used",
             category: ["12", "preowned"]
         },
         {
@@ -757,7 +600,7 @@
             storage: "64GB",
             colors: ["Black", "White", "Green", "Blue", "Purple", "Red"],
             price: "₦430,000",
-            badge: "badge-refurbished",
+            badge: "badge-used",
             category: ["12", "preowned"]
         },
 
@@ -783,7 +626,7 @@
             storage: "64GB",
             colors: ["Black", "White", "Red"],
             price: "₦280,000",
-            badge: "badge-refurbished",
+            badge: "badge-used",
             category: ["se", "preowned"]
         },
 
@@ -821,7 +664,7 @@
             storage: "256GB",
             colors: ["Midnight Green", "Space Gray", "Silver", "Gold"],
             price: "₦520,000",
-            badge: "badge-refurbished",
+            badge: "badge-used",
             category: ["preowned"]
         },
         {
@@ -833,7 +676,7 @@
             storage: "64GB",
             colors: ["Midnight Green", "Space Gray", "Silver", "Gold"],
             price: "₦450,000",
-            badge: "badge-refurbished",
+            badge: "badge-used",
             category: ["preowned"]
         },
         {
@@ -845,7 +688,7 @@
             storage: "128GB",
             colors: ["Black", "Green", "Yellow", "Purple", "Red", "White"],
             price: "₦380,000",
-            badge: "badge-refurbished",
+            badge: "badge-used",
             category: ["preowned"]
         },
         {
@@ -857,7 +700,7 @@
             storage: "256GB",
             colors: ["Space Gray", "Silver", "Gold"],
             price: "₦350,000",
-            badge: "badge-refurbished",
+            badge: "badge-used",
             category: ["preowned"]
         },
         {
@@ -869,7 +712,7 @@
             storage: "64GB",
             colors: ["Space Gray", "Silver", "Gold"],
             price: "₦320,000",
-            badge: "badge-refurbished",
+            badge: "badge-used",
             category: ["preowned"]
         },
         {
@@ -881,7 +724,7 @@
             storage: "128GB",
             colors: ["Black", "White", "Blue", "Yellow", "Coral", "Red"],
             price: "₦280,000",
-            badge: "badge-refurbished",
+            badge: "badge-used",
             category: ["preowned"]
         },
         {
@@ -893,7 +736,7 @@
             storage: "256GB",
             colors: ["Space Gray", "Silver"],
             price: "₦300,000",
-            badge: "badge-refurbished",
+            badge: "badge-used",
             category: ["preowned"]
         },
         {
@@ -905,7 +748,7 @@
             storage: "64GB",
             colors: ["Space Gray", "Silver", "Gold", "Red"],
             price: "₦220,000",
-            badge: "badge-refurbished",
+            badge: "badge-used",
             category: ["preowned"]
         },
         {
@@ -917,7 +760,7 @@
             storage: "64GB",
             colors: ["Space Gray", "Silver", "Gold", "Red"],
             price: "₦200,000",
-            badge: "badge-refurbished",
+            badge: "badge-used",
             category: ["preowned"]
         },
         {
@@ -929,7 +772,7 @@
             storage: "128GB",
             colors: ["Black", "Jet Black", "Silver", "Gold", "Rose Gold", "Red"],
             price: "₦180,000",
-            badge: "badge-refurbished",
+            badge: "badge-used",
             category: ["preowned", "budget"]
         },
         {
@@ -941,7 +784,7 @@
             storage: "32GB",
             colors: ["Black", "Jet Black", "Silver", "Gold", "Rose Gold", "Red"],
             price: "₦150,000",
-            badge: "badge-refurbished",
+            badge: "badge-used",
             category: ["preowned", "budget"]
         },
         {
@@ -953,7 +796,7 @@
             storage: "64GB",
             colors: ["Space Gray", "Silver", "Gold", "Rose Gold"],
             price: "₦120,000",
-            badge: "badge-refurbished",
+            badge: "badge-used",
             category: ["preowned", "budget"]
         },
         {
@@ -965,7 +808,7 @@
             storage: "32GB",
             colors: ["Space Gray", "Silver", "Gold", "Rose Gold"],
             price: "₦100,000",
-            badge: "badge-refurbished",
+            badge: "badge-used",
             category: ["preowned", "budget"]
         },
         {
@@ -1025,7 +868,7 @@
             storage: "256GB",
             colors: ["Pacific Blue", "Graphite"],
             price: "₦550,000",
-            badge: "badge-refurbished",
+            badge: "badge-used",
             category: ["12", "pro", "preowned"]
         },
         {
@@ -1277,7 +1120,7 @@
             storage: "256GB",
             colors: ["Mystic Black", "Mystic Bronze", "Mystic White"],
             price: "₦650,000",
-            badge: "badge-refurbished",
+            badge: "badge-used",
             category: ["samsung", "note", "flagship"]
         },
         {
@@ -1358,7 +1201,7 @@
             const badgeClass = iphone.badge ? `iphone-badge ${iphone.badge}` : 'iphone-badge';
             const badgeText = iphone.badge === 'badge-new' ? 'New Arrival' :
                              iphone.badge === 'badge-preowned' ? 'Certified Pre-owned' :
-                             iphone.badge === 'badge-refurbished' ? 'Refurbished' :
+                             iphone.badge === 'badge-used' ? 'used' :
                              iphone.badge === 'badge-limited' ? 'Limited Stock' : '';
             
             const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(createWhatsAppMessage(iphone))}`;
@@ -1444,7 +1287,460 @@
         });
     });
 </script>
+<style>
+    /* iPhone Hero Section */
+    .iphone-hero {
+        text-align: center;
+        padding: 60px 5%;
+        background: linear-gradient(135deg, #050505 0%, #1a1a1a 100%);
+        border-bottom: 1px solid var(--border-light);
+    }
 
-</body>
+    .hero-subtitle {
+        font-size: 12px;
+        letter-spacing: 3px;
+        color: var(--accent);
+        text-transform: uppercase;
+        margin-bottom: 15px;
+    }
 
-</html>
+    .iphone-hero h1 {
+        font-size: clamp(2.5rem, 6vw, 4rem);
+        margin-bottom: 20px;
+        background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .hero-description {
+        max-width: 700px;
+        margin: 0 auto;
+        color: var(--accent-silver);
+        line-height: 1.6;
+        font-size: 14px;
+    }
+
+    /* Features Bar */
+    .features-bar {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        padding: 40px 5%;
+        background: rgba(10, 10, 10, 0.5);
+        border-bottom: 1px solid var(--border-light);
+    }
+
+    .feature-item {
+        text-align: center;
+        padding: 20px;
+    }
+
+    .feature-icon {
+        font-size: 2rem;
+        color: var(--accent);
+        margin-bottom: 10px;
+    }
+
+    .feature-title {
+        font-weight: 700;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 5px;
+    }
+
+    .feature-desc {
+        font-size: 12px;
+        color: var(--accent-silver);
+    }
+
+    /* Filter Bar */
+    .filter-bar {
+        display: flex;
+        gap: 10px;
+        padding: 20px 5%;
+        overflow-x: auto;
+        background: rgba(10, 10, 10, 0.8);
+        border-bottom: 1px solid var(--border-light);
+    }
+
+    .filter-btn {
+        padding: 8px 16px;
+        background: transparent;
+        border: 1px solid var(--border-light);
+        color: var(--accent-silver);
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border-radius: 20px;
+        cursor: pointer;
+        white-space: nowrap;
+        transition: all 0.3s;
+    }
+
+    .filter-btn:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+    }
+
+    .filter-btn.active {
+        background: var(--accent);
+        color: var(--tech-black);
+        border-color: var(--accent);
+    }
+
+    /* Series Badges */
+    .series-badges {
+        display: flex;
+        gap: 10px;
+        padding: 15px 5%;
+        overflow-x: auto;
+        background: rgba(5, 5, 5, 0.5);
+    }
+
+    .series-badge {
+        padding: 6px 14px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--border-light);
+        color: var(--accent-silver);
+        font-size: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+        border-radius: 15px;
+        cursor: pointer;
+        white-space: nowrap;
+        transition: all 0.3s;
+    }
+
+    .series-badge:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+    }
+
+    .series-badge.active {
+        background: var(--accent);
+        color: var(--tech-black);
+        border-color: var(--accent);
+    }
+
+    /* Inventory Section */
+    .inventory-section {
+        padding: 40px 5%;
+        background: var(--tech-black);
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 25px;
+        max-width: 1600px;
+        margin: 0 auto;
+    }
+
+    /* iPhone Card */
+    .iphone-card {
+        position: relative;
+        background: linear-gradient(135deg, #1a1a1a 0%, #111 100%);
+        border: 1px solid var(--border-light);
+        border-radius: 20px;
+        padding: 20px;
+        transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+        overflow: hidden;
+    }
+
+    .iphone-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(0, 242, 255, 0.1), transparent);
+        transition: left 0.5s;
+    }
+
+    .iphone-card:hover::before {
+        left: 100%;
+    }
+
+    .iphone-card:hover {
+        border-color: var(--accent);
+        transform: translateY(-10px);
+        box-shadow: 0 20px 50px rgba(0, 242, 255, 0.15);
+    }
+
+    .iphone-badge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        padding: 4px 10px;
+        font-size: 9px;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border-radius: 50px;
+        z-index: 10;
+    }
+
+    .badge-new {
+        background: #00f2ff;
+        color: #050505;
+    }
+
+    .badge-preowned {
+        background: #ffa500;
+        color: #050505;
+    }
+
+    .badge-used {
+        background: #34c759;
+        color: #050505;
+    }
+
+    .badge-limited {
+        background: #ff3b30;
+        color: white;
+    }
+
+    .badge-foldable {
+        background: #af52de;
+        color: white;
+    }
+
+    .badge-budget {
+        background: #5ac8fa;
+        color: #050505;
+    }
+
+    .iphone-year {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        font-size: 10px;
+        color: var(--accent);
+        font-weight: 700;
+        letter-spacing: 2px;
+    }
+
+    .iphone-series {
+        font-size: 11px;
+        color: var(--accent-silver);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 8px;
+    }
+
+    .iphone-card h3 {
+        font-size: 18px;
+        margin-bottom: 12px;
+        line-height: 1.3;
+    }
+
+    .iphone-color {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 15px;
+        padding: 10px;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 8px;
+    }
+
+    .color-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .color-name {
+        font-size: 11px;
+        color: var(--accent-silver);
+    }
+
+    .specs {
+        font-size: 12px;
+        color: var(--accent-silver);
+        line-height: 1.5;
+        margin-bottom: 15px;
+    }
+
+    .storage-options {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 15px;
+    }
+
+    .storage-badge {
+        flex: 1;
+        padding: 6px;
+        text-align: center;
+        font-size: 10px;
+        background: rgba(0, 242, 255, 0.1);
+        border: 1px solid rgba(0, 242, 255, 0.3);
+        border-radius: 6px;
+        color: var(--accent);
+        font-weight: 700;
+    }
+
+    .storage-badge.active {
+        background: var(--accent);
+        color: var(--tech-black);
+        border-color: var(--accent);
+    }
+
+    .price-container {
+        margin-bottom: 15px;
+    }
+
+    .price-tag {
+        display: block;
+        font-size: 20px;
+        font-weight: 900;
+        color: var(--accent);
+        margin-bottom: 5px;
+    }
+
+    .price-note {
+        font-size: 10px;
+        color: var(--accent-silver);
+    }
+
+    .buy-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+        padding: 12px;
+        background: linear-gradient(135deg, var(--accent), #00d4ff);
+        color: var(--tech-black);
+        text-decoration: none;
+        font-size: 12px;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border-radius: 10px;
+        transition: all 0.3s;
+        border: none;
+        cursor: pointer;
+    }
+
+    .buy-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(0, 242, 255, 0.3);
+    }
+
+    /* Footer */
+    footer {
+        background: linear-gradient(135deg, #050505 0%, #1a1a1a 100%);
+        padding: 40px 5%;
+        text-align: center;
+        border-top: 1px solid var(--border-light);
+    }
+
+    .footer-logo {
+        font-size: 1.5rem;
+        font-weight: 900;
+        letter-spacing: 3px;
+        color: var(--accent);
+        margin-bottom: 15px;
+        text-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
+    }
+
+    .footer-contact {
+        font-size: 12px;
+        color: var(--accent-silver);
+        line-height: 1.8;
+        margin-bottom: 15px;
+    }
+
+    .whatsapp-direct {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 24px;
+        background: #25d366;
+        color: white;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border-radius: 50px;
+        transition: all 0.3s;
+        margin-top: 15px;
+    }
+
+    .whatsapp-direct:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+        .iphone-hero {
+            padding: 40px 4%;
+        }
+
+        .iphone-hero h1 {
+            font-size: 2rem;
+        }
+
+        .filter-bar {
+            padding: 15px 4%;
+        }
+
+        .grid {
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 15px;
+        }
+
+        .iphone-card {
+            padding: 15px;
+        }
+
+        .iphone-card h3 {
+            font-size: 15px;
+        }
+
+        .features-bar {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 480px) {
+        .grid {
+            grid-template-columns: 1fr;
+        }
+
+        .features-bar {
+            grid-template-columns: 1fr;
+        }
+
+        .filter-bar {
+            gap: 8px;
+        }
+    }
+</style>
+
+<footer>
+    <div class="footer-logo">MINDWAY TECH</div>
+    <p class="footer-contact">
+        Abuja, Nigeria | 0810 456 4543 and 07038557377<br>
+        Open Monday - Saturday: 9AM - 7PM | Sunday: 12PM - 5PM<br>
+        <br> Basement Shop No.5 Buchanan Mall
+Plot 1340 Aminu Kano Crescent, Wuse 2, Abuja <br> 
+        Email: mindwaymobilesltd@gmail.com
+    </p>
+    <p style="color: var(--accent-silver); font-size: 12px; max-width: 600px; margin: 0 auto 20px;">
+        Your trusted partner for premium technology solutions in Abuja. 
+        Sales • Repairs • Trade-Ins • Installment Plans
+    </p>
+    <a href="https://wa.me/2348104564543" class="whatsapp-direct" target="_blank">
+        <i class="fab fa-whatsapp"></i> Chat Directly on WhatsApp
+    </a>
+</footer>
+
